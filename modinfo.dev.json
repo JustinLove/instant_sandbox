@@ -1,0 +1,23 @@
+{
+  "author": "wondible",
+  "build": "61450",
+  "category": ["in-game", "ui"],
+  "context": "client",
+  "date": "2014/02/25",
+  "description": "One click to start a game with AI x0",
+  "display_name": "Instant Sandbox Dev",
+  "enabled": true,
+  "forum": null,
+  "id": "instant_sandbox",
+  "identifier": "com.wondible.pa.instant_sandbox",
+  "start": [
+    "coui://ui/mods/instant_sandbox/require.js",
+    "coui://ui/mods/instant_sandbox/instant_sandbox.css",
+    "coui://ui/mods/instant_sandbox/bootstrap.js"
+  ],
+  "priority": 100,
+  "requires": [],
+  "signature": "not yet implemented",
+  "version": "0.0.0"
+}
+
