@@ -1,5 +1,5 @@
-define(['instant_sandbox/instant_sandbox'], function(instant_sandbox) {
+define(['instant_sandbox/start'], function(start) {
   "use strict";
 
-  setTimeout(instant_sandbox.ready, 0)
+  setTimeout(start.ready, 0)
 })

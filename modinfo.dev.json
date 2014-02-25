@@ -12,7 +12,6 @@
   "identifier": "com.wondible.pa.instant_sandbox",
   "start": [
     "coui://ui/mods/instant_sandbox/require.js",
-    "coui://ui/mods/instant_sandbox/instant_sandbox.css",
     "coui://ui/mods/instant_sandbox/bootstrap.js"
   ],
   "priority": 100,
