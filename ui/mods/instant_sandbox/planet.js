@@ -1,22 +1,22 @@
 define([], function() {
   return {
     convertClientToServer: function(planet) {
-      if (planet.hasOwnProperty('position'))
+      if (planet.hasOwnProperty('position_x'))
       {
-        planet.position_x = planet.position[0];
-        planet.position_y = planet.position[1];
-        delete planet.position;
+        planet.position = [planet.position_x, planet.position_y];
+        delete planet.position_x;
+        delete planet.position_y;
       }
-      if (planet.hasOwnProperty('velocity'))
+      if (planet.hasOwnProperty('velocity_x'))
       {
-        planet.velocity_x = planet.velocity[0];
-        planet.velocity_y = planet.velocity[1];
-        delete planet.velocity;
+        planet.velocity = [planet.velocity_x, planet.velocity_y];
+        delete planet.velocity_x;
+        delete planet.velocity_y;
       }
-      if (planet.hasOwnProperty('generator'))
+      if (planet.hasOwnProperty('planet'))
       {
-        planet.planet = planet.generator;
-        delete planet.generator;
+        planet.generator = planet.planet;
+        delete planet.planet;
       }
     },
     convertServerToClient: function (planet) {

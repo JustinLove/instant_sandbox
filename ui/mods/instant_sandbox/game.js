@@ -12,7 +12,7 @@ define([], function() {
       console.log("ubernet created game, gonna connect now...");
 
       data = JSON.parse(data);
-      lobbyIdObs(data.LobbyID);
+      model.lobbyId(data.LobbyID);
 
       connectToServer(data);
     }).fail(function (data) {
@@ -34,7 +34,7 @@ define([], function() {
         }, 5000);
       } else {
         console.log("ubernet game join successful, will connect now");
-        lobbyIdObs(lobbyId);
+        model.lobbyId(lobbyId);
         connectToServer();
       }
     }).fail(function (data) {

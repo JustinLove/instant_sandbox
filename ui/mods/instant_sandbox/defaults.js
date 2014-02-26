@@ -23,25 +23,25 @@ define([], function() {
       },
     ],
     system: {
-      "name": "Small Moon",
+      "name": "Just a Small Moon",
       "planets": [
         {
           "name": "Small Moon",
-          "mass": 2500,
+          "mass": 10000,
           "position_x": 20135.1,
           "position_y": -24.0562,
           "velocity_x": 0.188263,
           "velocity_y": 157.582,
           "planet": {
-             "seed": 7846,
-             "radius": 720,
-             "heightRange": 77,
-             "waterHeight": 40,
-             "temperature": 100,
+             "seed": 784462,
+             "radius": 400,
+             "heightRange": 75,
+             "waterHeight": 0,
+             "temperature": 0,
              "metalDensity": 50,
              "metalClusters": 50,
-             "biomeScale": 23,
-             "biome": "lava"
+             "biomeScale": 50,
+             "biome": "moon"
           }
         }
       ]

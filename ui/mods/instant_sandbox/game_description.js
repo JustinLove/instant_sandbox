@@ -13,7 +13,7 @@ define(['instant_sandbox/planet'], function(planet) {
   }
 
   return {
-    teamTypes: ['FreeForAll', 'TeamArmies', 'Alliance', 'VersusAI']
+    teamTypes: ['FreeForAll', 'TeamArmies', 'Alliance', 'VersusAI'],
     convertClientToServer: function(desc) {
       desc.system.planets.forEach(planet.convertClientToServer)
     },
@@ -21,7 +21,7 @@ define(['instant_sandbox/planet'], function(planet) {
       desc.system.planets.forEach(planet.convertServerToClient)
     },
     createGame: function(config) {
-      var desc = Object.clone(template)
+      var desc = Object.create(template)
       desc.armies = config.armies
       desc.type = config.type
       desc.system = config.system
