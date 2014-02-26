@@ -28,12 +28,12 @@ define([], function() {
         {
           "name": "Small Moon",
           "mass": 10000,
-          "position_x": 20135.1,
-          "position_y": -24.0562,
-          "velocity_x": 0.188263,
-          "velocity_y": 157.582,
+          "position_x": 53567.4,
+          "position_y": 8786.55,
+          "velocity_x": -15.5348,
+          "velocity_y": 94.7081,
           "planet": {
-             "seed": 784462,
+             "seed": 78462,
              "radius": 400,
              "heightRange": 75,
              "waterHeight": 0,
