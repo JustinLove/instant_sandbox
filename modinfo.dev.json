@@ -4,10 +4,10 @@
   "category": ["in-game", "ui"],
   "context": "client",
   "date": "2014/02/28",
-  "description": "One click to start a game with AI x0",
+  "description": "One click to start a game with an AI no economy.",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
-  "forum": null,
+  "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
   "id": "instant_sandbox",
   "identifier": "com.wondible.pa.instant_sandbox",
   "start": [
@@ -17,6 +17,6 @@
   "priority": 100,
   "requires": [],
   "signature": "not yet implemented",
-  "version": "0.0.0"
+  "version": "0.1.0"
 }
 
