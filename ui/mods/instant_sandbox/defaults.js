@@ -1,14 +1,14 @@
 define([], function() {
-  var FreeForAll = 0
-  var TeamArmies = 1
-  var Alliance = 2
-  var VersusAi = 3
+  var FreeForAll = '0'
+  var TeamArmies = '1'
+  var Alliance = '2'
+  var VersusAi = '3'
 
   return {
-    type: VersusAi,
+    type: FreeForAll,
     armies: [
-      { "slots" : [ "player" ] },
-      { "slots" : [ "ai" ] }
+      { "slots" : [ "player" ], ai: false, alliance: false },
+      { "slots" : [ "ai" ], ai: true, alliance: false }
     ],
     economyModifiers: [
       {

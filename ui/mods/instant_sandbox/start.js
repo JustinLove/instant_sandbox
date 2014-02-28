@@ -10,8 +10,6 @@ define([
     allowNewOrJoinGame: model.allowNewOrJoinGame,
     startInstantSandbox: function() {
       game.publish()
-
-      app.hello(handlers.server_state, handlers.connection_disconnected);
     }
   }
 
@@ -20,20 +18,19 @@ define([
       window.location.href = msg.url;
     },
     lobby: function(msg) {
-      console.log("lobby: join slot...");
-      game.joinSlot(0);
-
-      api.getWorldView(0).whenPlanetsReady().done(function() {
-        game.toggleReady()
-      });
-    },
-    config: function(msg) {
-      console.log("config: configure planets...");
+      console.log("lobby: configure planets...");
       var desc = description.createGame(defaults)
       description.convertClientToServer(desc)
       game.configure(desc)
       game.updateEconomyModifiers(defaults.economyModifiers)
-    }
+
+      console.log("lobby: join slot...");
+      game.joinSlot(0);
+
+      //api.getWorldView(0).whenPlanetsReady().done(function() {
+        game.startGame()
+      //});
+    },
   }
 
   handlers.connection_failed = function (payload) {
@@ -71,7 +68,7 @@ define([
   return {
     ready: function() {
       var $button = $(html)
-      $('#A3').parents('tr').before($button)
+      $('#navigation_items').prepend($button)
       ko.applyBindings(viewModel, $button[0])
     }
   }

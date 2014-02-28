@@ -54,11 +54,11 @@ define([], function() {
       Number(data.ServerPort),
       String(model.displayName()),
       String(data.Ticket),
-      String(JSON.stringify({ password: '' })));
+      String(JSON.stringify({ password: undefined })));
   }
 
   var configure = function(desc) {
-    model.send_message('game_config', desc, function(success) {
+    model.send_message('update_game_config', desc, function(success) {
       if (!success) {
         console.log("setting planets failed");
         reset();
@@ -71,13 +71,19 @@ define([], function() {
   }
 
   var joinSlot = function(slot) {
-    var acu = '/pa/units/commanders/quad_base/quad_base.json'; // TODO make this cool and dynamic
-    model.send_message("join_army", {army: slot, commander: acu})
+    model.send_message('join_army', {
+      army: slot,
+      commander: { ObjectName: model.preferredCommander().ObjectName }
+    });
   }
 
-  var toggleReady = function() {
-    model.send_message('toggle_ready', undefined, function(success) {
-      console.log("Ready: waiting for other players...");
+  var startGame = function() {
+    console.log('starting game')
+    model.send_message('start_game', undefined, function(success) {
+      if (!success) {
+        console.log('start_game failed')
+        reset()
+      }
     });
   };
 
@@ -89,6 +95,6 @@ define([], function() {
     configure: configure,
     updateEconomyModifiers: updateEconomyModifiers,
     joinSlot: joinSlot,
-    toggleReady: toggleReady,
+    startGame: startGame,
   }
 })

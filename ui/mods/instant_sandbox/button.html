@@ -1,7 +1,5 @@
-<td class="td_start_menu_item" data-bind="click: startInstantSandbox, visible: allowNewOrJoinGame">
-  <span class="link_start_menu_item">
-    <a href="#" id="start_instant_sandbox" data-bind="click_sound: 'default', rollover_sound: 'default'">
-      <span class="start_menu_item_lbl">INSTANT SANDBOX</span>
-    </a>
-  </span>               
-</td>   
+<a href="#" class="nav_item" id="start_instant_sandbox" data-bind="click: startInstantSandbox, click_sound: 'default', rollover_sound: 'default', css: { nav_item_disabled: !allowNewOrJoinGame() } ">
+    <span class="nav_item_text" data-bind="css: { nav_item_text_disabled: !allowNewOrJoinGame() }">
+        <loc desc="">INSTANT SANDBOX</loc>
+    </span>
+</a>

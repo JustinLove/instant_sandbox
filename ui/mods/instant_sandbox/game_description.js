@@ -5,11 +5,12 @@ define(['instant_sandbox/planet'], function(planet) {
     "armies" : [],
     "blocked" : [],
     "enable_lan" : false,
+    "public": false,
     "friends" : [],
-    "password" : '',
+    "password" : undefined,
     "spectators" : 0,
     "system" : null,
-    "type" : 0
+    "type" : '0',
   }
 
   return {
