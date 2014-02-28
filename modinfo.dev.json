@@ -1,9 +1,9 @@
 {
   "author": "wondible",
-  "build": "62037",
+  "build": "62110",
   "category": ["in-game", "ui"],
   "context": "client",
-  "date": "2014/02/27",
+  "date": "2014/02/28",
   "description": "One click to start a game with AI x0",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,

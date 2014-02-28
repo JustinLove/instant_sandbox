@@ -66,10 +66,6 @@ define([], function() {
     });
   }
 
-  var updateEconomyModifiers = function(armies) {
-    model.send_message('update_economy_modifiers', {armies: armies});
-  }
-
   var joinSlot = function(slot) {
     model.send_message('join_army', {
       army: slot,
@@ -93,7 +89,6 @@ define([], function() {
     joinGame: joinGame,
     connectToServer: connectToServer,
     configure: configure,
-    updateEconomyModifiers: updateEconomyModifiers,
     joinSlot: joinSlot,
     startGame: startGame,
   }

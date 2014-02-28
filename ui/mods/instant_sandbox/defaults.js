@@ -7,20 +7,8 @@ define([], function() {
   return {
     type: FreeForAll,
     armies: [
-      { "slots" : [ "player" ], ai: false, alliance: false },
-      { "slots" : [ "ai" ], ai: true, alliance: false }
-    ],
-    economyModifiers: [
-      {
-        starting_metal_override: 2000.0, // ignored
-        starting_energy_override: 2000.0, // ignored
-        economy_rate_override: 1.0,
-      },
-      {
-        starting_metal_override: 2000.0, // ignored
-        starting_energy_override: 2000.0, // ignored
-        economy_rate_override: 0.0,
-      },
+      { "slots" : [ "player" ], ai: false, alliance: false, economy_factor: 1 },
+      { "slots" : [ "ai" ], ai: true, alliance: false, economy_factor: -1 },
     ],
     system: {
       "name": "Just a Small Moon",

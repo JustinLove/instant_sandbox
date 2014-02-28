@@ -22,14 +22,11 @@ define([
       var desc = description.createGame(defaults)
       description.convertClientToServer(desc)
       game.configure(desc)
-      game.updateEconomyModifiers(defaults.economyModifiers)
 
       console.log("lobby: join slot...");
       game.joinSlot(0);
 
-      //api.getWorldView(0).whenPlanetsReady().done(function() {
-        game.startGame()
-      //});
+      game.startGame()
     },
   }
 
