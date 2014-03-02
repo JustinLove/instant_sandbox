@@ -10,12 +10,14 @@
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
   "id": "instant_sandbox",
   "identifier": "com.wondible.pa.instant_sandbox",
-  "start": [
-    "coui://ui/mods/instant_sandbox/require.js",
-    "coui://ui/mods/instant_sandbox/bootstrap.js"
-  ],
   "priority": 100,
   "requires": [],
+  "scenes": {
+    "start": [
+      "coui://ui/mods/instant_sandbox/require.js",
+      "coui://ui/mods/instant_sandbox/bootstrap.js"
+    ]
+  },
   "signature": "not yet implemented",
   "version": "0.1.0"
 }
