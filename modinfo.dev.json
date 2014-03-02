@@ -1,9 +1,9 @@
 {
   "author": "wondible",
-  "build": "62110",
+  "build": "62165",
   "category": ["in-game", "ui"],
   "context": "client",
-  "date": "2014/02/28",
+  "date": "2014/03/02",
   "description": "One click to start a game with an AI no economy.",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
@@ -19,6 +19,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }
 

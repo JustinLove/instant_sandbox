@@ -66,6 +66,15 @@ define([], function() {
     });
   }
 
+  var resetArmies = function(armies) {
+    model.send_message('reset_armies', armies,function(success) {
+      if (!success) {
+        console.log("reset armies failed");
+        reset();
+      }
+    })
+  }
+
   var joinSlot = function(slot) {
     model.send_message('join_army', {
       army: slot,
@@ -89,6 +98,7 @@ define([], function() {
     joinGame: joinGame,
     connectToServer: connectToServer,
     configure: configure,
+    resetArmies: resetArmies,
     joinSlot: joinSlot,
     startGame: startGame,
   }

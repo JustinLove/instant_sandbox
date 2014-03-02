@@ -22,6 +22,7 @@ define([
       var desc = description.createGame(defaults)
       description.convertClientToServer(desc)
       game.configure(desc)
+      game.resetArmies(defaults.armies)
 
       console.log("lobby: join slot...");
       game.joinSlot(0);

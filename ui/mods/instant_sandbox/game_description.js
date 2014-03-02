@@ -23,7 +23,6 @@ define(['instant_sandbox/planet'], function(planet) {
     },
     createGame: function(config) {
       var desc = Object.create(template)
-      desc.armies = config.armies
       desc.type = config.type
       desc.system = config.system
       return desc
