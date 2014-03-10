@@ -8,8 +8,10 @@ define([], function() {
     type: FreeForAll,
     armies: [
       { "slots" : 1, ai: false, alliance: false /* not working ,economy_factor: 1 */ },
-      { "slots" : 1, ai: true, alliance: false, economy_factor: -1 /* 0 ignored */ },
+      { "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
+      //{ "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
     ],
+    spectators: 0,
     system: {
       "name": "Just a Small Moon",
       "planets": [

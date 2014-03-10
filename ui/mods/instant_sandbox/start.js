@@ -17,6 +17,9 @@ define([
     landing: function(msg) {
       window.location.href = msg.url;
     },
+    playing: function(msg) { // spectating, still buggy
+      window.location.href = msg.url;
+    },
     lobby: function(msg) {
       console.log("lobby: configure planets...");
       var desc = description.createGame(defaults)
@@ -25,7 +28,9 @@ define([
       game.resetArmies(defaults.armies)
 
       console.log("lobby: join slot...");
-      game.joinSlot(0);
+      if (defaults.armies[0].ai == false) {
+        game.joinSlot(0);
+      }
 
       game.startGame()
     },
@@ -57,6 +62,8 @@ define([
 
   var state = ''
   handlers.server_state = function(msg) {
+    console.log('server_state')
+    console.log(msg)
     if (msg.state != state) {
       state = msg.state
       states[msg.state] && states[msg.state](msg)
@@ -66,7 +73,7 @@ define([
   return {
     ready: function() {
       var $button = $(html)
-      $('#navigation_items').prepend($button)
+      $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
     }
   }

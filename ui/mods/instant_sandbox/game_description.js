@@ -25,6 +25,7 @@ define(['instant_sandbox/planet'], function(planet) {
       var desc = Object.create(template)
       desc.type = config.type
       desc.system = config.system
+      desc.spectators = config.spectators
       return desc
     }
   }
