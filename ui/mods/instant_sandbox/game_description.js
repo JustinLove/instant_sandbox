@@ -2,7 +2,6 @@ define(['instant_sandbox/planet'], function(planet) {
   "use strict";
 
   var template = {
-    "armies" : [],
     "blocked" : [],
     "enable_lan" : false,
     "public": false,

@@ -12,7 +12,8 @@ _.defaults(handlers, {
   login_accepted: instant_sandbox_stub,
   login_rejected: instant_sandbox_stub,
   connection_disconnected: instant_sandbox_stub,
-  server_state: instant_sandbox_stub
+  server_state: instant_sandbox_stub,
+  control: instant_sandbox_stub
 })
 
 require(['instant_sandbox/main'])

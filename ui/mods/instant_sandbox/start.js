@@ -31,8 +31,6 @@ define([
       if (defaults.armies[0].ai == false) {
         game.joinSlot(0);
       }
-
-      game.startGame()
     },
   }
 
@@ -67,6 +65,14 @@ define([
     if (msg.state != state) {
       state = msg.state
       states[msg.state] && states[msg.state](msg)
+    }
+  }
+
+  handlers.control = function(msg) {
+    console.log('control')
+    console.log(msg)
+    if (msg.sim_ready) {
+      game.startGame()
     }
   }
 

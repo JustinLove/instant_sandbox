@@ -6,6 +6,7 @@ define([], function() {
   }
 
   var publish = function() {
+    reset();
     console.log("publish game...");
     console.log("use region: " + model.uberNetRegion());
     engine.asyncCall("ubernet.startGame", model.uberNetRegion(), 'Config').done(function (data) {
