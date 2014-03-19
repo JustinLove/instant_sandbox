@@ -13,7 +13,7 @@
     hooked[event] = true
     var prior = handlers[event]
     handlers[event] = function() {
-      console.log('panhandler', event, arguments)
+      //console.log('panhandler', event, arguments)
       for (var i in actions[event]) {
         actions[event][i].apply(window, arguments)
       }

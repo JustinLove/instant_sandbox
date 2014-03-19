@@ -7,6 +7,7 @@ define([], function() {
     'login_accepted',
     'login_rejected',
     'connection_disconnected',
+    'connection_failed',
     'server_state',
     'control'
   ])
@@ -174,7 +175,6 @@ define([], function() {
       reset()
     }
   }
-
 
   return {
     reset: reset,
