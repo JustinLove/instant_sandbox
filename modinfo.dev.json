@@ -1,7 +1,7 @@
 {
   "author": "wondible",
   "build": "62857",
-  "category": ["ui"],
+  "category": ["ui", "main menu", "modding"],
   "context": "client",
   "date": "2014/03/14",
   "description": "One click to start a game with an AI no economy.",
