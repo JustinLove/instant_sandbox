@@ -1,11 +1,27 @@
 define([], function() {
   "use strict";
 
+  // make the object keys exist for Panel.ready
+  panhandler.stub([
+    'connection_lost',
+    'login_accepted',
+    'login_rejected',
+    'connection_disconnected',
+    'server_state',
+    'control'
+  ])
+
+  var state = ''
+  var callerConfiguration = function() {}
+
   var reset = function() {
+    removeHandlers()
     engine.call('reset_game_state');
+    state = ''
+    callerConfiguration = function() {}
   }
 
-  var publish = function() {
+  var publish = function(config) {
     reset();
     console.log("publish game...");
     console.log("use region: " + model.uberNetRegion());
@@ -15,6 +31,7 @@ define([], function() {
       data = JSON.parse(data);
       model.lobbyId(data.LobbyID);
 
+      installHandlers(config)
       connectToServer(data);
     }).fail(function (data) {
       console.log("failed to start ubernet game");
@@ -92,6 +109,72 @@ define([], function() {
       }
     });
   };
+
+  var states = {
+    landing: function(msg) {
+      removeHandlers()
+      window.location.href = msg.url;
+    },
+    playing: function(msg) { // spectating, still buggy
+      removeHandlers()
+      window.location.href = msg.url;
+    },
+    lobby: function(msg) {
+      callerConfiguration(msg)
+    }
+  }
+
+  var installHandlers = function(config) {
+    callerConfiguration = config
+    Object.keys(gameHandlers).forEach(function(handler) {
+      panhandler.on(handler, gameHandlers[handler])
+    })
+  }
+
+  var removeHandlers = function() {
+    Object.keys(gameHandlers).forEach(function(handler) {
+      panhandler.off(handler, gameHandlers[handler])
+    })
+  }
+
+  var gameHandlers = {
+    server_state: function(msg) {
+      console.log('server_state')
+      console.log(msg)
+      if (msg.state != state) {
+        state = msg.state
+        states[msg.state] && states[msg.state](msg)
+      }
+    },
+    control: function(msg) {
+      console.log('control')
+      console.log(msg)
+      if (msg.sim_ready) {
+        startGame()
+      }
+    },
+    connection_disconnected: function (payload) {
+      var message = loc("!LOC(connect_to_game:connection_to_server_lost.message):CONNECTION TO SERVER LOST")
+      console.log(payload, message)
+      reset()
+    },
+    connection_failed: function (payload) {
+      var message = loc("!LOC(connect_to_game:connection_to_server_failed.message):CONNECTION TO SERVER FAILED")
+      console.log(payload, message)
+      reset()
+    },
+    login_accepted: function (payload) {
+      var message = loc('!LOC(connect_to_game:login_accepted.message):LOGIN ACCEPTED')
+      console.log(message)
+      app.hello(gameHandlers.server_state, gameHandlers.connection_disconnected);
+    },
+    login_rejected: function (payload) {
+      var message = loc("!LOC(connect_to_game:login_to_server_rejected.message):LOGIN TO SERVER REJECTED")
+      console.log(payload, message)
+      reset()
+    }
+  }
+
 
   return {
     reset: reset,

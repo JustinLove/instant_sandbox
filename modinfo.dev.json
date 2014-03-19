@@ -4,7 +4,7 @@
   "category": ["ui", "main menu", "modding"],
   "context": "client",
   "date": "2014/03/14",
-  "description": "One click to start a game with an AI no economy.",
+  "description": "One click to start a game with an AI no economy.  Incompatible with PAStats",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
@@ -15,10 +15,11 @@
   "scenes": {
     "start": [
       "coui://ui/mods/instant_sandbox/require.js",
+      "coui://ui/mods/instant_sandbox/panhandler.js",
       "coui://ui/mods/instant_sandbox/bootstrap.js"
     ]
   },
   "signature": "not yet implemented",
-  "version": "0.3.0"
+  "version": "0.4.0"
 }
 
