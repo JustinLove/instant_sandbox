@@ -25,16 +25,18 @@ define([
   }
 
   var gameConfiguration = function(msg) {
-    console.log("lobby: configure planets...");
+    dialog.progress("lobby: configure planets...");
     var desc = description.createGame(defaults)
     description.convertClientToServer(desc)
     game.configure(desc)
     game.resetArmies(defaults.armies)
 
-    console.log("lobby: join slot...");
+    dialog.progress("lobby: join slot...");
     if (defaults.armies[0].ai == false) {
       game.joinSlot(0);
     }
+
+    dialog.progress("Generating Planets")
   }
 
   return {
@@ -45,6 +47,7 @@ define([
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
       dialog.ready()
+      game.textStatus.subscribe(dialog.progress)
     }
   }
 })

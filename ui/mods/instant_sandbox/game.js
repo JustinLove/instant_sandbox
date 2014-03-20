@@ -14,6 +14,9 @@ define([], function() {
 
   var state = ''
   var callerConfiguration = function() {}
+  var textStatus = ko.observable('')
+
+  textStatus.subscribe(function(message) {console.log(message)})
 
   var reset = function() {
     removeHandlers()
@@ -24,10 +27,10 @@ define([], function() {
 
   var publish = function(config) {
     reset();
-    console.log("publish game...");
+    textStatus("publish game...");
     console.log("use region: " + model.uberNetRegion());
     engine.asyncCall("ubernet.startGame", model.uberNetRegion(), 'Config').done(function (data) {
-      console.log("ubernet created game, gonna connect now...");
+      textStatus("ubernet created game, gonna connect now...");
 
       data = JSON.parse(data);
       model.lobbyId(data.LobbyID);
@@ -35,13 +38,13 @@ define([], function() {
       installHandlers(config)
       connectToServer(data);
     }).fail(function (data) {
-      console.log("failed to start ubernet game");
+      textStatus("failed to start ubernet game");
       reset();
     });
   }
 
   var joinGame = function(lobbyId) {
-    console.log("join ubernet game... ");
+    textStatus("join ubernet game... ");
 
     engine.asyncCall("ubernet.joinGame", lobbyId).done(function (data) {
       data = JSON.parse(data);
@@ -52,12 +55,12 @@ define([], function() {
           joinGame(lobbyId);
         }, 5000);
       } else {
-        console.log("ubernet game join successful, will connect now");
+        textStatus("ubernet game join successful, will connect now");
         model.lobbyId(lobbyId);
         connectToServer();
       }
     }).fail(function (data) {
-      console.log("failed to join ubernet game");
+      textStatus("failed to join ubernet game");
       reset();
     });
   }
@@ -67,7 +70,7 @@ define([], function() {
     model.gameTicket(data.Ticket);
     model.gameHostname(data.ServerHostname);
     model.gamePort(data.ServerPort);
-    console.log("connecting to game...");
+    textStatus("connecting to game...");
     engine.call('join_game',
       String(data.ServerHostname),
       Number(data.ServerPort),
@@ -79,7 +82,7 @@ define([], function() {
   var configure = function(desc) {
     model.send_message('update_game_config', desc, function(success) {
       if (!success) {
-        console.log("setting planets failed");
+        textStatus("setting planets failed");
         reset();
       }
     });
@@ -88,7 +91,7 @@ define([], function() {
   var resetArmies = function(armies) {
     model.send_message('reset_armies', armies,function(success) {
       if (!success) {
-        console.log("reset armies failed");
+        textStatus("reset armies failed");
         reset();
       }
     })
@@ -102,10 +105,10 @@ define([], function() {
   }
 
   var startGame = function() {
-    console.log('starting game')
+    textStatus('starting game')
     model.send_message('start_game', undefined, function(success) {
       if (!success) {
-        console.log('start_game failed')
+        textStatus('start_game failed')
         reset()
       }
     });
@@ -156,22 +159,25 @@ define([], function() {
     },
     connection_disconnected: function (payload) {
       var message = loc("!LOC(connect_to_game:connection_to_server_lost.message):CONNECTION TO SERVER LOST")
-      console.log(payload, message)
+      textStatus(message)
+      console.log(payload)
       reset()
     },
     connection_failed: function (payload) {
       var message = loc("!LOC(connect_to_game:connection_to_server_failed.message):CONNECTION TO SERVER FAILED")
-      console.log(payload, message)
+      textStatus(message)
+      console.log(payload)
       reset()
     },
     login_accepted: function (payload) {
       var message = loc('!LOC(connect_to_game:login_accepted.message):LOGIN ACCEPTED')
-      console.log(message)
+      textStatus(message)
       app.hello(gameHandlers.server_state, gameHandlers.connection_disconnected);
     },
     login_rejected: function (payload) {
       var message = loc("!LOC(connect_to_game:login_to_server_rejected.message):LOGIN TO SERVER REJECTED")
-      console.log(payload, message)
+      textStatus(message)
+      console.log(payload)
       reset()
     }
   }
@@ -185,5 +191,6 @@ define([], function() {
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     startGame: startGame,
+    textStatus: textStatus
   }
 })
