@@ -2,8 +2,9 @@ define([
   'instant_sandbox/game_description',
   'instant_sandbox/game',
   'instant_sandbox/defaults',
+  'instant_sandbox/dialog',
   'text!instant_sandbox/button.html'
-], function(description, game, defaults, html) {
+], function(description, game, defaults, dialog, html) {
   "use strict";
 
   var hasPAStats = function() {
@@ -18,6 +19,7 @@ define([
   var viewModel = {
     allowNewOrJoinGame: model.allowNewOrJoinGame,
     startInstantSandbox: function() {
+      dialog.open('Making Sandbox')
       game.publish(gameConfiguration)
     }
   }
@@ -42,6 +44,7 @@ define([
       var $button = $(html)
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
+      dialog.ready()
     }
   }
 })
