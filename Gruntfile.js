@@ -40,7 +40,9 @@ module.exports = function(grunt) {
               'LICENSE.txt',
               'README.md',
               'CHANGELOG.md',
-              'ui/mods/instant_sandbox/*.css'],
+              'ui/mods/instant_sandbox/panhandler.js',
+              'ui/mods/instant_sandbox/*.css'
+            ],
             dest: '../<%= target %>/',
           },
         ],
