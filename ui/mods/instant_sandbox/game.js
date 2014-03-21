@@ -86,7 +86,7 @@ define([], function() {
     });
   }
 
-  var modifySystem = function(system) {
+  var setSystem = function(system) {
     model.send_message('modify_system', system, function(success) {
       if (!success) {
         textStatus("modify_system failed");
@@ -195,7 +195,7 @@ define([], function() {
     joinGame: joinGame,
     connectToServer: connectToServer,
     configure: configure,
-    modifySystem: modifySystem,
+    setSystem: setSystem,
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     startGame: startGame,

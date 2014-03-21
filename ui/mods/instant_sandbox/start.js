@@ -1,10 +1,10 @@
 define([
-  'instant_sandbox/game_description',
+  'instant_sandbox/system',
   'instant_sandbox/game',
   'instant_sandbox/defaults',
   'instant_sandbox/dialog',
   'text!instant_sandbox/button.html'
-], function(description, game, defaults, dialog, html) {
+], function(system, game, defaults, dialog, html) {
   "use strict";
 
   var hasPAStats = function() {
@@ -29,8 +29,8 @@ define([
 
     game.configure(defaults.settings)
 
-    description.convertClientToServer(defaults.system)
-    game.modifySystem(defaults.system)
+    system.convertClientToServer(defaults.system)
+    game.setSystem(defaults.system)
 
     game.resetArmies(defaults.armies)
 
