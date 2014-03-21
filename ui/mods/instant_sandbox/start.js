@@ -39,6 +39,8 @@ define([
     dialog.progress("Generating Planets")
   }
 
+  dialog.progress.subscribe(function(message) {console.log(message)})
+
   return {
     ready: function() {
       if (hasPAStats()) return

@@ -16,8 +16,6 @@ define([], function() {
   var callerConfiguration = function() {}
   var textStatus = ko.observable('')
 
-  textStatus.subscribe(function(message) {console.log(message)})
-
   var reset = function() {
     removeHandlers()
     engine.call('reset_game_state');
