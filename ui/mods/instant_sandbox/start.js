@@ -27,7 +27,7 @@ define([
   var gameConfiguration = function(msg) {
     dialog.progress("lobby: configure planets...");
 
-    game.configure(description.createGame(defaults))
+    game.configure(defaults.settings)
 
     description.convertClientToServer(defaults.system)
     game.modifySystem(defaults.system)

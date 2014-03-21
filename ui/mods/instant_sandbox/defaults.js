@@ -5,13 +5,19 @@ define([], function() {
   var VersusAi = '3'
 
   return {
-    type: FreeForAll,
+    settings: {
+      type: FreeForAll,
+      spectators: 0,
+      blocked : [],
+      public: false,
+      friends : [],
+      password : undefined,
+    },
     armies: [
       { "slots" : 1, ai: false, alliance: false /* not working ,economy_factor: 1 */ },
       { "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
       //{ "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
     ],
-    spectators: 0,
     system: {
       "name": "Just a Small Moon",
       "planets": [
