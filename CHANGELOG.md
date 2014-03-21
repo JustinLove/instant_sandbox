@@ -1,5 +1,11 @@
 # Instant Sandbox Changelog
 
+## 0.5.0
+
+- Compatible with 63180
+- Defaults object now has a settings subobject
+- Changed the system name in case it ever shows in a server browser
+
 ## 0.4.0
 
 - No longer blindly overwrites handlers

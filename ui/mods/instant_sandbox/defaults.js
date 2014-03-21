@@ -19,7 +19,7 @@ define([], function() {
       //{ "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
     ],
     system: {
-      "name": "Just a Small Moon",
+      "name": "Instant Sandbox System",
       "planets": [
         {
           "name": "Small Moon",
