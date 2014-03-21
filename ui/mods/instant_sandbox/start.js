@@ -26,9 +26,12 @@ define([
 
   var gameConfiguration = function(msg) {
     dialog.progress("lobby: configure planets...");
-    var desc = description.createGame(defaults)
-    description.convertClientToServer(desc)
-    game.configure(desc)
+
+    game.configure(description.createGame(defaults))
+
+    description.convertClientToServer(defaults.system)
+    game.modifySystem(defaults.system)
+
     game.resetArmies(defaults.armies)
 
     dialog.progress("lobby: join slot...");

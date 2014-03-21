@@ -78,9 +78,18 @@ define([], function() {
   }
 
   var configure = function(desc) {
-    model.send_message('update_game_config', desc, function(success) {
+    model.send_message('modify_settings', desc, function(success) {
       if (!success) {
-        textStatus("setting planets failed");
+        textStatus("modify_settings failed");
+        reset();
+      }
+    });
+  }
+
+  var modifySystem = function(system) {
+    model.send_message('modify_system', system, function(success) {
+      if (!success) {
+        textStatus("modify_system failed");
         reset();
       }
     });
@@ -186,6 +195,7 @@ define([], function() {
     joinGame: joinGame,
     connectToServer: connectToServer,
     configure: configure,
+    modifySystem: modifySystem,
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     startGame: startGame,
