@@ -11,12 +11,15 @@
   "id": "instant_sandbox",
   "identifier": "com.wondible.pa.instant_sandbox",
   "priority": 100,
-  "requires": [],
+  "requires": [ "rSettingsManager" ],
   "scenes": {
     "start": [
       "coui://ui/mods/instant_sandbox/require.js",
       "coui://ui/mods/instant_sandbox/panhandler.js",
       "coui://ui/mods/instant_sandbox/bootstrap.js"
+    ],
+    "settings": [
+      "coui://ui/mods/instant_sandbox/settings.js"
     ]
   },
   "signature": "not yet implemented",
