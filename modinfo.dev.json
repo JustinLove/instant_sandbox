@@ -3,7 +3,7 @@
   "build": "63180",
   "category": ["ui", "main menu", "modding"],
   "context": "client",
-  "date": "2014/03/21",
+  "date": "2014/04/05",
   "description": "One click to start a game with an AI no economy.  Incompatible with PAStats",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
@@ -23,6 +23,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "0.5.0"
+  "version": "0.6.0"
 }
 

@@ -4,7 +4,11 @@ define([], function() {
   var Alliance = '2'
   var VersusAi = '3'
 
+  var Code = 'code'
+  var Settings = 'settings'
+
   return {
+    config: Settings,
     settings: {
       type: FreeForAll,
       spectators: 0,

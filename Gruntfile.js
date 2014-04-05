@@ -41,6 +41,7 @@ module.exports = function(grunt) {
               'README.md',
               'CHANGELOG.md',
               'ui/mods/instant_sandbox/panhandler.js',
+              'ui/mods/instant_sandbox/settings.js',
               'ui/mods/instant_sandbox/*.css'
             ],
             dest: '../<%= target %>/',

@@ -1,10 +1,10 @@
 define([
   'instant_sandbox/system',
   'instant_sandbox/game',
-  'instant_sandbox/defaults',
+  'instant_sandbox/config',
   'instant_sandbox/dialog',
   'text!instant_sandbox/button.html'
-], function(system, game, defaults, dialog, html) {
+], function(system, game, config, dialog, html) {
   "use strict";
 
   var hasPAStats = function() {
@@ -27,15 +27,15 @@ define([
   var gameConfiguration = function(msg) {
     dialog.progress("lobby: configure planets...");
 
-    game.configure(defaults.settings)
+    game.configure(config.settings)
 
-    system.convertClientToServer(defaults.system)
-    game.setSystem(defaults.system)
+    system.convertClientToServer(config.system)
+    game.setSystem(config.system)
 
-    game.resetArmies(defaults.armies)
+    game.resetArmies(config.armies)
 
     dialog.progress("lobby: join slot...");
-    if (defaults.armies[0].ai == false) {
+    if (config.armies[0].ai == false) {
       game.joinSlot(0);
     }
 
