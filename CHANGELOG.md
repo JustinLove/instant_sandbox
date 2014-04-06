@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 0.6.0
+
+- Most common parameters are available under the game settings, UI tab.  To switch back to code driven games, change the config property of the defaults object to Code (alias for 'code')
+- Tweaked start button insertion again
+
 ## 0.5.0
 
 - Compatible with 63180
