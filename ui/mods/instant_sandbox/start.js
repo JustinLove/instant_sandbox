@@ -24,6 +24,9 @@ define([
     }
   }
 
+  // gave up on race condition
+  model.startInstantSandbox = viewModel.startInstantSandbox
+
   var gameConfiguration = function(msg) {
     dialog.progress("lobby: configure planets...");
 
