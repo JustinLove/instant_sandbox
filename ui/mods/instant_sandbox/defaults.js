@@ -8,7 +8,8 @@ define([], function() {
   var Settings = 'settings'
 
   return {
-    config: Settings,
+    //config: Settings,
+    config: Code,
     settings: {
       type: FreeForAll,
       spectators: 0,
@@ -41,7 +42,7 @@ define([], function() {
              "metalDensity": 50,
              "metalClusters": 50,
              "biomeScale": 50,
-             "biome": "moon"
+             "biome": "sandbox"
           }
         }
       ]
