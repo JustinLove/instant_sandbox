@@ -10,6 +10,7 @@
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
   "id": "instant_sandbox",
   "identifier": "com.wondible.pa.instant_sandbox",
+  "icon": "http://pamods.github.io/icons/instant_sandbox.png",
   "priority": 100,
   "requires": [ "rSettingsManager" ],
   "scenes": {
