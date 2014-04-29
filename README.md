@@ -14,7 +14,7 @@ I've tried to concentrate the settings in once place, so if you're comfortable w
 
 ## CAUTION
 
-This mod will NOT play nice with PAStats (or possibly other start screen mods), so don't have both mods enabled at once - you probably don't want to report sandbox sessions anyway.
+This mod is no longer broken by PAStats, but game reporting does not work. Please disable reporting during sandbox games.
 
 ## Development
 
