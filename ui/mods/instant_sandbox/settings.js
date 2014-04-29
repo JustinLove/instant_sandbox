@@ -39,8 +39,8 @@
   }
 
   model.addSetting_Slider(
-    'AI Economy x100', 'instant_standbox_ai_economy', 'UI',
-    0, 200, 0,
+    'AI Economy x10', 'instant_standbox_ai_economy', 'UI',
+    0, 20, 0,
     'Instant Sandbox')
 
   model.addSetting_Slider(

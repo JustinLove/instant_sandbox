@@ -19,7 +19,7 @@ define(['instant_sandbox/defaults'], function(defaults) {
       slots: settings.instant_standbox_ai_slots,
       ai: true,
       alliance: false,
-      economy_factor: settings.instant_standbox_ai_economy / 100.0
+      economy_factor: settings.instant_standbox_ai_economy / 10.0
     })
   }
 
