@@ -6,7 +6,7 @@
 - Change GUI settings multiplier from 100x to 10x
 - Add icon
 - Now compatible with PA Stats
-- Release to PAM
+- Release to PAMM
 
 ## 0.6.0
 
