@@ -1,5 +1,13 @@
 # Instant Sandbox Changelog
 
+## 1.0.0
+
+- Use sandbox biome for builtin planet
+- Change GUI settings multiplier from 100x to 10x
+- Add icon
+- Now compatible with PA Stats
+- Release to PAM
+
 ## 0.6.0
 
 - Most common parameters are available under the game settings, UI tab.  To switch back to code driven games, change the config property of the defaults object to Code (alias for 'code')
