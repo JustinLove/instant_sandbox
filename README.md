@@ -12,10 +12,6 @@ Some of the most common settings can be changed in the game settings:
 
 I've tried to concentrate the settings in once place, so if you're comfortable with text editors it is possible to fully customize things.  Changing the `config` property of the `defaults` object to Code will cause it to use the defaults object instead of the user settings.
 
-## CAUTION
-
-This mod is no longer broken by PAStats, but game reporting does not work. Please disable reporting during sandbox games.
-
 ## Development
 
 The project is set up to use combine files using [RequireJS](http://requirejs.org/) and [amdclean](https://github.com/gfranko/amdclean), with build automation through [Grunt](http://gruntjs.com/), which combines the JS, inlines HTML, copies files, and edits `modinfo.json` to fix up paths and names.

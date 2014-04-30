@@ -4,7 +4,7 @@
   "category": ["ui", "main menu", "modding"],
   "context": "client",
   "date": "2014/04/29",
-  "description": "One click to start a game with an AI no economy, or as configured in settings.  PAStats reporting does not work, please disable during sandbox games.",
+  "description": "One click to start a game vs an AI with no economy, or as configured in settings.",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
