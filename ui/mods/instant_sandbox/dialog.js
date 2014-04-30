@@ -1,15 +1,16 @@
 define(['text!instant_sandbox/dialog.html'], function(html) {
+  "use strict"
+
   var viewModel = {
     instantSandboxProgress: ko.observable('')
   }
 
   return {
-    ready: function() {
-      $dialog = $(html)
+    open: function(message) {
+      var $dialog = $(html)
       ko.applyBindings(viewModel, $dialog[0])
       $('body').append($dialog)
-    },
-    open: function(message) {
+
       $dialog.dialog({
         dialogClass: "no-close",
         closeOnEscape : false,

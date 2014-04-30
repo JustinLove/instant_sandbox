@@ -60,7 +60,6 @@ define([
       var $button = $(html)
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
-      dialog.ready()
       game.textStatus.subscribe(dialog.progress)
     }
   }
