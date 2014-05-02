@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 1.0.1
+
+- Accidentally shipped 1.0.0 with code-controlled configuration.
+
 ## 1.0.0
 
 - Use sandbox biome for builtin planet
