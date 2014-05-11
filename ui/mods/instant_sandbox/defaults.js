@@ -33,6 +33,8 @@ define([], function() {
           "position_y": 8786.55,
           "velocity_x": -15.5348,
           "velocity_y": 94.7081,
+          "required_thrust_to_move": 0,
+          "starting_planet": true,
           "planet": {
              "seed": 78462,
              "radius": 400,
