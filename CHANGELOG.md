@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 1.0.2
+
+- Use a default system if none set
+- Fix typo in setting names
+
 ## 1.0.1
 
 - Accidentally shipped 1.0.0 with code-controlled configuration.

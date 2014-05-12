@@ -3,7 +3,7 @@
   "build": "64498",
   "category": ["ui", "main menu", "modding"],
   "context": "client",
-  "date": "2014/05/01",
+  "date": "2014/05/11",
   "description": "One click to start a game vs an AI with no economy, or as configured in settings.",
   "display_name": "Instant Sandbox Dev",
   "enabled": true,
@@ -24,6 +24,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
 
