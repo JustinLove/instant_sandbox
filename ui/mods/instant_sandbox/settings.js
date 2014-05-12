@@ -39,17 +39,17 @@
   }
 
   model.addSetting_Slider(
-    'AI Economy x10', 'instant_standbox_ai_economy', 'UI',
+    'AI Economy x10', 'instant_sandbox_ai_economy', 'UI',
     0, 20, 0,
     'Instant Sandbox')
 
   model.addSetting_Slider(
-    'AI Armies', 'instant_standbox_ai_armies', 'UI',
+    'AI Armies', 'instant_sandbox_ai_armies', 'UI',
     1, 9, 1,
     'Instant Sandbox')
 
   model.addSetting_Slider(
-    'AI Commanders Per Army', 'instant_standbox_ai_slots', 'UI',
+    'AI Commanders Per Army', 'instant_sandbox_ai_slots', 'UI',
     1, 9, 1,
     'Instant Sandbox')
 
