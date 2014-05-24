@@ -8,8 +8,8 @@ define([], function() {
   var Settings = 'settings'
 
   return {
-    //config: Settings,
-    config: Code,
+    config: Settings,
+    //config: Code,
     settings: {
       type: FreeForAll,
       spectators: 0,

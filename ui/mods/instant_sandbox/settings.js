@@ -38,6 +38,27 @@
     window.location.href = 'coui://ui/main/game/load_planet/load_planet.html';
   }
 
+  model.addSetting_Text(
+    'Player Economy x10', 'instant_sandbox_player_economy', 'UI',
+    'Number', 50,
+    'Instant Sandbox')
+
+  model.addSetting_Text(
+    'AI Economy x10', 'instant_sandbox_ai_economy', 'UI',
+    'Number', 0,
+    'Instant Sandbox')
+
+  model.addSetting_Text(
+    'AI Armies', 'instant_sandbox_ai_armies', 'UI',
+    'Number', 1,
+    'Instant Sandbox')
+
+    /*
+  model.addSetting_Slider(
+    'Player Economy x10', 'instant_sandbox_player_economy', 'UI',
+    0, 50, 50,
+    'Instant Sandbox')
+
   model.addSetting_Slider(
     'AI Economy x10', 'instant_sandbox_ai_economy', 'UI',
     0, 20, 0,
@@ -52,6 +73,7 @@
     'AI Commanders Per Army', 'instant_sandbox_ai_slots', 'UI',
     1, 9, 1,
     'Instant Sandbox')
+    */
 
   model.addSetting_Button(
     'Set System', system_name, 'UI',

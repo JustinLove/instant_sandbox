@@ -148,8 +148,9 @@ define([], function() {
   var startGame = function() {
     if (!simReady() || !clientReady()) return
 
-        model.joinGame(model.lobbyId());
-        return
+    //model.joinGame(model.lobbyId());
+    //return
+
     textStatus('starting game')
     model.send_message('start_game', undefined, function(success, errorMessage) {
       if (!success) {

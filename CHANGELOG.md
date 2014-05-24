@@ -3,6 +3,9 @@
 ## 1.1
 
 - Galactic War Update
+- Settings manager sliders not working, fields changed to text boxes temporarily
+- Set player economy rate (server limited to 5.0 (50 at x10))
+- AI Commanders-per-army is currently not supported
 - If start game fails, switch to normal lobby for manual correction.
 
 ## 1.0.2
