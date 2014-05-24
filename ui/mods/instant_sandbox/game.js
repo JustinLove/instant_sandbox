@@ -122,16 +122,34 @@ define([], function() {
     })
   }
 
-  var joinSlot = function(slot) {
+  var joinSlot = function(slot, army, playerId) {
     model.send_message('join_army', {
       army: slot,
       commander: { ObjectName: model.preferredCommander().ObjectName }
+    });
+    model.send_message('set_econ_factor', {
+        id: playerId,
+        economy_factor: army.economy_factor
+    });
+  }
+
+  var addAI = function(slot, army) {
+    model.send_message('add_ai', {
+        army_index: slot,
+        slot_index: 0,
+        options: { 'ai': true }
+    });
+    model.send_message('set_econ_factor', {
+        id: slot.toString(), //making assumptions about how AI ids are assigned
+        economy_factor: army.economy_factor
     });
   }
 
   var startGame = function() {
     if (!simReady() || !clientReady()) return
 
+        model.joinGame(model.lobbyId());
+        return
     textStatus('starting game')
     model.send_message('start_game', undefined, function(success, errorMessage) {
       if (!success) {
@@ -220,6 +238,7 @@ define([], function() {
     setSystem: setSystem,
     resetArmies: resetArmies,
     joinSlot: joinSlot,
+    addAI: addAI,
     startGame: startGame,
     simReady: simReady,
     clientReady: clientReady,

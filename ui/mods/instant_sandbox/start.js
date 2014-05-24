@@ -44,24 +44,11 @@ define([
 
     dialog.progress("lobby: configuring players...");
     config.armies.forEach(function(army, army_index) {
-      console.log(arguments)
-      if (army_index == 0) {
-        game.joinSlot(0);
-        pastats.setPlayer(0, msg.data.players[0])
-        model.send_message('set_econ_factor', {
-            id: msg.data.players[0].id,
-            economy_factor: 100
-        });
+      if (army.player) {
+        game.joinSlot(army_index, army, msg.data.players[0].id);
+        pastats.setPlayer(army_index, msg.data.players[0])
       } else {
-        model.send_message('add_ai', {
-            army_index: army_index,
-            slot_index: 0,
-            options: { 'ai': true, econ_rate: 0.1 }
-        });
-        model.send_message('set_econ_factor', {
-            id: army_index.toString(),
-            economy_factor: 0
-        });
+        game.addAI(army_index, army);
       }
     })
 

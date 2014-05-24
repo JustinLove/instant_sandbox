@@ -10,14 +10,13 @@ define(['instant_sandbox/defaults'], function(defaults) {
 
   var config = {
     settings: defaults.settings,
-    armies: [{ "slots" : 1, ai: false, alliance: false}],
+    armies: [{ "slots" : 1, player: true, alliance: false}],
     system: decode(localStorage.instant_sandbox_system) || defaults.system
   }
 
   for (var i = 0; i < settings.instant_sandbox_ai_armies; i++) {
     config.armies.push({
       slots: settings.instant_sandbox_ai_slots,
-      ai: true,
       alliance: false,
       economy_factor: settings.instant_sandbox_ai_economy / 10.0
     })

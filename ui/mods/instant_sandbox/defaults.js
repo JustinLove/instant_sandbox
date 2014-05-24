@@ -19,8 +19,8 @@ define([], function() {
       password : undefined,
     },
     armies: [
-      { "slots" : 1, alliance: false },
-      { "slots" : 1, alliance: false },
+      { "slots" : 1, alliance: false, economy_factor: 5, player: true },
+      { "slots" : 1, alliance: false, economy_factor: 0 },
       //{ "slots" : 1, alliance: false },
     ],
     system: {
