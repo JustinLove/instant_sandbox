@@ -8,8 +8,8 @@ define([], function() {
   var Settings = 'settings'
 
   return {
-    config: Settings,
-    //config: Code,
+    //config: Settings,
+    config: Code,
     settings: {
       type: FreeForAll,
       spectators: 0,
@@ -19,9 +19,9 @@ define([], function() {
       password : undefined,
     },
     armies: [
-      { "slots" : 1, ai: false, alliance: false /* not working ,economy_factor: 1 */ },
-      { "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
-      //{ "slots" : 1, ai: true, alliance: false, economy_factor: -1 },
+      { "slots" : 1, alliance: false },
+      { "slots" : 1, alliance: false },
+      //{ "slots" : 1, alliance: false },
     ],
     system: {
       "name": "Instant Sandbox System",

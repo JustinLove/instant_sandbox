@@ -15,13 +15,30 @@ define([], function() {
   var state = ''
   var callerConfiguration = function() {}
   var textStatus = ko.observable('')
+  var simReady = ko.observable(false)
+  var clientReady = ko.observable(false)
 
   var reset = function() {
     removeHandlers()
     engine.call('reset_game_state');
     state = ''
     callerConfiguration = function() {}
+    simReady(false)
+    clientReady(false)
   }
+
+  var testLoading = function() {
+    var worldView = api.getWorldView(0);
+    if (worldView) {
+      worldView.arePlanetsReady().then(function(ready) { 
+        clientReady(ready)
+        if (!ready) setTimeout(testLoading, 500);
+      });
+    }
+    else {
+      setTimeout(testLoading, 500);
+    }
+  };
 
   var publish = function(config) {
     reset();
@@ -38,6 +55,7 @@ define([], function() {
     }).fail(function (data) {
       textStatus("failed to start ubernet game");
       reset();
+      //model.joinGame(model.lobbyId());
     });
   }
 
@@ -112,26 +130,32 @@ define([], function() {
   }
 
   var startGame = function() {
+    if (!simReady() || !clientReady()) return
+
     textStatus('starting game')
-    model.send_message('start_game', undefined, function(success) {
+    model.send_message('start_game', undefined, function(success, errorMessage) {
       if (!success) {
-        textStatus('start_game failed')
-        reset()
+        textStatus('start_game failed: ' + errorMessage)
+        model.joinGame(model.lobbyId());
       }
     });
   };
+
+  simReady.subscribe(startGame)
+  clientReady.subscribe(startGame)
 
   var states = {
     landing: function(msg) {
       removeHandlers()
       window.location.href = msg.url;
     },
-    playing: function(msg) { // spectating, still buggy
+    playing: function(msg) { // spectating
       removeHandlers()
       window.location.href = msg.url;
     },
     lobby: function(msg) {
       callerConfiguration(msg)
+      testLoading()
     }
   }
 
@@ -160,9 +184,7 @@ define([], function() {
     control: function(msg) {
       console.log('control')
       console.log(msg)
-      if (msg.sim_ready) {
-        startGame()
-      }
+      simReady(msg.sim_ready)
     },
     connection_disconnected: function (payload) {
       var message = loc("!LOC(connect_to_game:connection_to_server_lost.message):CONNECTION TO SERVER LOST")
@@ -199,6 +221,8 @@ define([], function() {
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     startGame: startGame,
+    simReady: simReady,
+    clientReady: clientReady,
     textStatus: textStatus
   }
 })
