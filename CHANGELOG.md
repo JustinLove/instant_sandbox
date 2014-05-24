@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 1.1
+
+- Galactic War Update
+- If start game fails, switch to normal lobby for manual correction.
+
 ## 1.0.2
 
 - Use a default system if none set
