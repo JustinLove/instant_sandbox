@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 1.2
+
+- Load server mods (in builds that support server mods)
+
 ## 1.1
 
 - Galactic War Update

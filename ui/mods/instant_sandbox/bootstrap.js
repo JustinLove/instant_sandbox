@@ -7,6 +7,8 @@ require.config({
 
 // make the object keys exist for Panel.ready
 panhandler.stub([
+  'mount_mod_file_data',
+  'server_mod_info_updated',
   'connection_lost',
   'login_accepted',
   'login_rejected',

@@ -3,6 +3,8 @@ define([], function() {
 
   // make the object keys exist for Panel.ready
   panhandler.stub([
+    'mount_mod_file_data',
+    'server_mod_info_updated',
     'connection_lost',
     'login_accepted',
     'login_rejected',
@@ -17,6 +19,7 @@ define([], function() {
   var textStatus = ko.observable('')
   var simReady = ko.observable(false)
   var clientReady = ko.observable(false)
+  var modsReady = ko.observable(true)
 
   var reset = function() {
     removeHandlers()
@@ -25,6 +28,7 @@ define([], function() {
     callerConfiguration = function() {}
     simReady(false)
     clientReady(false)
+    modsReady(true)
   }
 
   var testLoading = function() {
@@ -104,6 +108,16 @@ define([], function() {
     });
   }
 
+  var enableServerMods = function() {
+    model.send_message('mod_data_available', {}, function (success, response) {
+      if (success) {
+        console.log("Server mods requested: " + JSON.stringify(response));
+        api.mods.sendModFileDataToServer(response.auth_token);
+        modsReady(false)
+      }
+    });
+  }
+
   var setSystem = function(system) {
     model.send_message('modify_system', system, function(success) {
       if (!success) {
@@ -146,7 +160,7 @@ define([], function() {
   }
 
   var startGame = function() {
-    if (!simReady() || !clientReady()) return
+    if (!simReady() || !clientReady() || !modsReady()) return
 
     //model.joinGame(model.lobbyId());
     //return
@@ -162,6 +176,7 @@ define([], function() {
 
   simReady.subscribe(startGame)
   clientReady.subscribe(startGame)
+  modsReady.subscribe(startGame)
 
   var states = {
     landing: function(msg) {
@@ -205,6 +220,14 @@ define([], function() {
       console.log(msg)
       simReady(msg.sim_ready)
     },
+    mount_mod_file_data: function (payload) {
+      console.log("Mounting mod file data: " + JSON.stringify(payload));
+      api.mods.mountModFileData();
+    },
+    server_mod_info_updated: function (payload) {
+      console.log('server_mod_info_updated', payload)
+      modsReady(true)
+    },
     connection_disconnected: function (payload) {
       var message = loc("!LOC(connect_to_game:connection_to_server_lost.message):CONNECTION TO SERVER LOST")
       textStatus(message)
@@ -236,6 +259,7 @@ define([], function() {
     joinGame: joinGame,
     connectToServer: connectToServer,
     configure: configure,
+    enableServerMods: enableServerMods,
     setSystem: setSystem,
     resetArmies: resetArmies,
     joinSlot: joinSlot,

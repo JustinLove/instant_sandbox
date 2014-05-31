@@ -52,6 +52,8 @@ define([
       }
     })
 
+    game.enableServerMods()
+
     dialog.progress("Generating Planets")
   }
 
