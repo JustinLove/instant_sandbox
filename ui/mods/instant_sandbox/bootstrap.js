@@ -9,6 +9,7 @@ require.config({
 panhandler.stub([
   'mount_mod_file_data',
   'server_mod_info_updated',
+  'set_cheat_config',
   'connection_lost',
   'login_accepted',
   'login_rejected',

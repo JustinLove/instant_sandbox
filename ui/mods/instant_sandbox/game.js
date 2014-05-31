@@ -5,6 +5,7 @@ define([], function() {
   panhandler.stub([
     'mount_mod_file_data',
     'server_mod_info_updated',
+    'set_cheat_config',
     'connection_lost',
     'login_accepted',
     'login_rejected',
@@ -20,6 +21,20 @@ define([], function() {
   var simReady = ko.observable(false)
   var clientReady = ko.observable(false)
   var modsReady = ko.observable(true)
+
+  // picked up by live game
+  var cheatAllowChangeVision = ko.observable(false).extend({ session: 'cheat_allow_change_vision' });
+  var cheatAllowChangeControl = ko.observable(false).extend({ session: 'cheat_allow_change_control' });
+  var cheatAllowCreateUnit = ko.observable(false).extend({ session: 'cheat_allow_create_unit' });
+  var cheatAllowModDataUpdates = ko.observable(false).extend({ session: 'cheat_allow_mod_data_updates' });
+
+  var setCheatsFromCheatConfig = function(config) {
+    console.log("setCheatsFromCheatConfig: " + JSON.stringify(config));
+    cheatAllowChangeVision(config.cheat_flags.allow_change_vision);
+    cheatAllowChangeControl(config.cheat_flags.allow_change_control);
+    cheatAllowCreateUnit(config.cheat_flags.allow_create_unit);
+    cheatAllowModDataUpdates(config.cheat_flags.allow_mod_data_updates);
+  }
 
   var reset = function() {
     removeHandlers()
@@ -227,6 +242,9 @@ define([], function() {
     server_mod_info_updated: function (payload) {
       console.log('server_mod_info_updated', payload)
       modsReady(true)
+    },
+    set_cheat_config: function (payload) {
+      setCheatsFromCheatConfig(payload);
     },
     connection_disconnected: function (payload) {
       var message = loc("!LOC(connect_to_game:connection_to_server_lost.message):CONNECTION TO SERVER LOST")
