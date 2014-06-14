@@ -1,6 +1,6 @@
 # Instant Sandbox Changelog
 
-## PTE
+## 1.3
 
 - Update for new settings system, no longer depends on rSettingsManager
 
