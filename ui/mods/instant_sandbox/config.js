@@ -3,11 +3,9 @@ define(['instant_sandbox/defaults'], function(defaults) {
     return defaults
   }
 
-  initialSettingValue('instant_sandbox_ai_armies', 1)
-  initialSettingValue('instant_sandbox_ai_slots', 1)
-  initialSettingValue('instant_sandbox_ai_economy', 0)
-  initialSettingValue('instant_sandbox_player_economy', 50)
-  var settings = decode(localStorage.settings)
+  var aiArmies = api.settings.isSet('ui', 'instant_sandbox_ai_armies', true) || 1
+  var playerEconomy = api.settings.isSet('ui', 'instant_sandbox_player_economy', true) || 5.0
+  var aiEconomy = api.settings.isSet('ui', 'instant_sandbox_ai_economy', true) || 0.0
 
   var config = {
     settings: defaults.settings,
@@ -15,16 +13,16 @@ define(['instant_sandbox/defaults'], function(defaults) {
       "slots" : 1,
       player: true,
       alliance: false,
-      economy_factor: settings.instant_sandbox_player_economy / 10.0
+      economy_factor: playerEconomy
     }],
     system: decode(localStorage.instant_sandbox_system) || defaults.system
   }
 
-  for (var i = 0; i < settings.instant_sandbox_ai_armies; i++) {
+  for (var i = 0; i < aiArmies; i++) {
     config.armies.push({
       slots: 1, //settings.instant_sandbox_ai_slots,
       alliance: false,
-      economy_factor: settings.instant_sandbox_ai_economy / 10.0
+      economy_factor: aiEconomy
     })
   }
 

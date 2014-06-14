@@ -16,9 +16,6 @@
     "identifier": "com.wondible.pa.instant_sandbox",
     "icon": "http://pamods.github.io/icons/instant_sandbox.png",
     "priority": 100,
-    "requires": [
-        "rSettingsManager"
-    ],
     "scenes": {
         "start": [
             "coui://ui/mods/instant_sandbox/require.js",

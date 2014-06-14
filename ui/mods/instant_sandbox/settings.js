@@ -7,11 +7,10 @@
     loadedSystem({})
   }
 
-  console.log(instantSandboxSystem())
-
-  var system_name = 'Instant Sandbox System'
+  instantSandboxSystemName = 'Instant Sandbox System'
   if (instantSandboxSystem() && instantSandboxSystem().name) {
-    system_name = instantSandboxSystem().name
+    console.log('resetting name')
+    instantSandboxSystemName = instantSandboxSystem().name
   }
 
   var previousLastSceneUrl = ko.observable().extend({ session: 'previous_last_scene_url' });
@@ -25,59 +24,74 @@
   console.log(model.lastSceneUrl(), previousLastSceneUrl())
 
 
-  var navToSystemLoad = function() {
-    var nextSceneUrl = ko.observable().extend({ session: 'next_scene_url' });
-    var previousLastSceneUrl = ko.observable().extend({ session: 'previous_last_scene_url' });
+  model.navToSystemLoad = function() {
+    api.settings.save().then(function() {
+      var nextSceneUrl = ko.observable().extend({ session: 'next_scene_url' });
+      var previousLastSceneUrl = ko.observable().extend({ session: 'previous_last_scene_url' });
 
-    previousLastSceneUrl(model.lastSceneUrl())
-    model.lastSceneUrl('coui://ui/main/game/settings/settings.html');
-    nextSceneUrl('coui://ui/main/game/settings/settings.html');
+      previousLastSceneUrl(model.lastSceneUrl())
+      model.lastSceneUrl('coui://ui/main/game/settings/settings.html');
+      nextSceneUrl('coui://ui/main/game/settings/settings.html');
 
-    localStorage.settings = encode(model.settings())
+      window.location.href = 'coui://ui/main/game/load_planet/load_planet.html';
+    })
 
-    window.location.href = 'coui://ui/main/game/load_planet/load_planet.html';
   }
 
-  model.addSetting_Text(
-    'Player Economy x10', 'instant_sandbox_player_economy', 'UI',
-    'Number', 50,
-    'Instant Sandbox')
+  $('.slider').attr('data-slider-tooltip', 'show')
 
-  model.addSetting_Text(
-    'AI Economy x10', 'instant_sandbox_ai_economy', 'UI',
-    'Number', 0,
-    'Instant Sandbox')
+  _.extend(api.settings.definitions.ui.settings, {
+    instant_sandbox_player_economy: {
+      title: 'Instant Sandbox - Player Economy',
+      type: 'slider',
+      options: {
+        formater: function(v) {return v.toPrecision(2)},
+        tooltip: 'show',
+        min: 0,
+        max: 5.0,
+        step: 0.1
+      },
+      default: 5.0,
+    },
+    instant_sandbox_ai_economy: {
+      title: 'Instant Sandbox - AI Economy',
+      type: 'slider',
+      options: {
+        min: 0,
+        max: 5.0,
+        step: 0.1
+      },
+      default: 0,
+    },
+    instant_sandbox_ai_armies: {
+      title: 'Instant Sandbox - AI Armies',
+      type: 'slider',
+      options: {
+        min: 1,
+        max: 9,
+        step: 1
+      },
+      default: 1,
+    }
+  })
 
-  model.addSetting_Text(
-    'AI Armies', 'instant_sandbox_ai_armies', 'UI',
-    'Number', 1,
-    'Instant Sandbox')
-
-    /*
-  model.addSetting_Slider(
-    'Player Economy x10', 'instant_sandbox_player_economy', 'UI',
-    0, 50, 50,
-    'Instant Sandbox')
-
-  model.addSetting_Slider(
-    'AI Economy x10', 'instant_sandbox_ai_economy', 'UI',
-    0, 20, 0,
-    'Instant Sandbox')
-
-  model.addSetting_Slider(
-    'AI Armies', 'instant_sandbox_ai_armies', 'UI',
-    1, 9, 1,
-    'Instant Sandbox')
-
+/*
   model.addSetting_Slider(
     'AI Commanders Per Army', 'instant_sandbox_ai_slots', 'UI',
     1, 9, 1,
     'Instant Sandbox')
     */
 
-  model.addSetting_Button(
-    'Set System', system_name, 'UI',
-    navToSystemLoad,
-    'Instant Sandbox')
+
+  $('#sidebar .content').append(
+    '<div>' + 
+      '<div class="btn_std" id="command" style="margin-left:-6px;" ' +
+          'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
+        '<div class="btn_label" style="width: 270px; margin:8px 0px;">'+
+          'Set Instant Sandbox System' +
+        '</div>'+
+        '<label>' + instantSandboxSystemName + '</label>' +
+      '</div>'+
+    '</div>')
 })()
   

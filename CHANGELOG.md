@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## PTE
+
+- Update for new settings system, no longer depends on rSettingsManager
+
 ## 1.2
 
 - Load server mods (in builds that support server mods)
