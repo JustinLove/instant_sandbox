@@ -51,7 +51,7 @@ module.exports = function(grunt) {
       modinfo: {
         files: [
           {
-            src: 'modinfo.dev.json',
+            src: 'modinfo.json',
             dest: '../<%= target %>/modinfo.json',
           },
         ],
@@ -71,14 +71,6 @@ module.exports = function(grunt) {
             return JSON.stringify(info, null, 2)
           }
         }
-      },
-      dev: {
-        files: [
-          {
-            src: 'modinfo.dev.json',
-            dest: 'modinfo.json',
-          },
-        ],
       }
     },
   });

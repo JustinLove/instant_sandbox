@@ -21,5 +21,3 @@ The generated project includes a `package.json` that lists the dependencies, but
 The repository expects to be in a mod folder named `instant_sandbox_dev`.  The default grunt task builds to `instant_sandbox_test`.  The 'production' build is through:
 
     grunt --target=instant_sandbox
-
-The main mod file is `modinfo.dev.json` because PAMM rewrites `modinfo.json` when updating it.  `grunt copy:dev` is a convience task to update the live file from the formatted one.
