@@ -1,5 +1,11 @@
 # Instant Sandbox Changelog
 
+## 2.0
+
+- If unpacked RequireJS is good enough for Galactic War, it's good enough for me. (And it dances around the KO double-bind issue circa 67998)
+- Without a build process, removed Grunt
+- Remove depreciated fields from modinfo
+
 ## 1.3
 
 - Update for new settings system, no longer depends on rSettingsManager

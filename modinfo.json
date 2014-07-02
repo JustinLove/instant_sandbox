@@ -1,24 +1,21 @@
 {
     "author": "wondible",
-    "build": "66567",
+    "build": "68331",
     "category": [
         "ui",
         "main menu",
         "modding"
     ],
     "context": "client",
-    "date": "2014/06/14",
+    "date": "2014/07/02",
     "description": "One click to start a game vs an AI with no economy, or as configured in settings.",
-    "display_name": "Instant Sandbox Dev",
-    "enabled": true,
+    "display_name": "Instant Sandbox",
     "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
-    "id": "instant_sandbox_dev",
     "identifier": "com.wondible.pa.instant_sandbox",
     "icon": "http://pamods.github.io/icons/instant_sandbox.png",
     "priority": 100,
     "scenes": {
         "start": [
-            "coui://ui/mods/instant_sandbox/require.js",
             "coui://ui/mods/instant_sandbox/panhandler.js",
             "coui://ui/mods/instant_sandbox/bootstrap.js"
         ],
@@ -27,5 +24,5 @@
         ]
     },
     "signature": "not yet implemented",
-    "version": "1.3.0"
+    "version": "2.0.0"
 }

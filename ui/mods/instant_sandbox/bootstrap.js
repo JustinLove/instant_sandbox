@@ -1,9 +1,8 @@
-require.config({
-  baseUrl: "coui://ui/mods",
-  paths: {
-    text: 'instant_sandbox/text',
-  }
-})
+(function() {
+  var paths = require.s.contexts._.config.paths
+  paths.instant_sandbox = 'coui://ui/mods/instant_sandbox'
+  paths.text = paths.text || 'coui://ui/mods/instant_sandbox/text'
+})()
 
 // make the object keys exist for Panel.ready
 panhandler.stub([
@@ -19,4 +18,8 @@ panhandler.stub([
   'control'
 ])
 
-require(['instant_sandbox/main'])
+require(['instant_sandbox/start'], function(start) {
+  "use strict";
+
+  start.ready()
+})
