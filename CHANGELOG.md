@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 2.0.1
+
+- Patch to make mod settings appear Settings
+- Only respond to the start button when it's enabled.
+
 ## 2.0
 
 - If unpacked RequireJS is good enough for Galactic War, it's good enough for me. (And it dances around the KO double-bind issue circa 67998)
