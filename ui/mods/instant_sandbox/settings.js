@@ -75,6 +75,9 @@
     }
   })
 
+  // force model.settingsLists to update
+  model.settingDefinitions(api.settings.definitions)
+
 /*
   model.addSetting_Slider(
     'AI Commanders Per Army', 'instant_sandbox_ai_slots', 'UI',
