@@ -20,8 +20,10 @@ define([
   var viewModel = {
     allowNewOrJoinGame: model.allowNewOrJoinGame,
     startInstantSandbox: function() {
-      dialog.open('Making Sandbox')
-      game.publish(gameConfiguration)
+      if (model.allowNewOrJoinGame()) {
+        dialog.open('Making Sandbox')
+        game.publish(gameConfiguration)
+      }
     }
   }
 
