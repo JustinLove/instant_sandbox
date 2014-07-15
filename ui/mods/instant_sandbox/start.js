@@ -17,18 +17,19 @@ define([
     return false
   }
 
+  var instantSandboxReady = ko.observable(false)
+
   var viewModel = {
-    allowNewOrJoinGame: model.allowNewOrJoinGame,
+    instantSandboxEnabled: ko.computed(function() {
+      return model.allowNewOrJoinGame() && instantSandboxReady()
+    }),
     startInstantSandbox: function() {
-      if (model.allowNewOrJoinGame()) {
+      if (this.instantSandboxEnabled()) {
         dialog.open('Making Sandbox')
         game.publish(gameConfiguration)
       }
     }
   }
-
-  // gave up on race condition
-  model.startInstantSandbox = viewModel.startInstantSandbox
 
   var gameConfiguration = function(msg) {
     dialog.progress("lobby: configure planets...");
@@ -69,6 +70,7 @@ define([
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
       game.textStatus.subscribe(dialog.progress)
+      setTimeout(function() {instantSandboxReady(true)}, 1000)
     }
   }
 })
