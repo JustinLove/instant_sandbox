@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 2.1.0
+
+- Add a one second delay to button enable to avoid accidental clicks when appearing
+- Add a region check before starting
+
 ## 2.0.1
 
 - Patch to make mod settings appear Settings

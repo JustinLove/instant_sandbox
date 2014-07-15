@@ -19,14 +19,38 @@ define([
 
   var instantSandboxReady = ko.observable(false)
 
+  var originalFinishRegionSetup = model.finishRegionSetup
+  var regionSetupContinuation = originalFinishRegionSetup
+  model.finishRegionSetup = function() {
+    model.uberNetRegion(model.selectedUberNetRegion());
+
+    if (!model.uberNetRegion())
+        return; /* do nothing */
+
+    var cont = regionSetupContinuation
+    regionSetupContinuation = originalFinishRegionSetup
+    model.inRegionSetup(false)
+    cont()
+  }
+
+  var selectRegion = function(continuation) {
+    regionSetupContinuation = continuation
+    model.inRegionSetup(true)
+    $("#regionDlg").dialog('open');
+  }
+
   var viewModel = {
     instantSandboxEnabled: ko.computed(function() {
       return model.allowNewOrJoinGame() && instantSandboxReady()
     }),
     startInstantSandbox: function() {
-      if (this.instantSandboxEnabled()) {
+      if (!viewModel.instantSandboxEnabled()) return
+
+      if (model.uberNetRegion() && model.isUberNetRegionAvailable()) {
         dialog.open('Making Sandbox')
         game.publish(gameConfiguration)
+      } else {
+        selectRegion(viewModel.startInstantSandbox)
       }
     }
   }
