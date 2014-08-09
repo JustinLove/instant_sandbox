@@ -4,11 +4,13 @@ define(['instant_sandbox/defaults'], function(defaults) {
   }
 
   var play = api.settings.isSet('ui', 'instant_sandbox_play', true) || 'PLAY'
+  var action = api.settings.isSet('ui', 'instant_sandbox_action', true) || 'START'
   var armies = api.settings.isSet('ui', 'instant_sandbox_armies', true) || 2
   var playerEconomy = api.settings.isSet('ui', 'instant_sandbox_player_economy', true) || 5.0
   var aiEconomy = api.settings.isSet('ui', 'instant_sandbox_ai_economy', true) || 0.0
 
   var config = {
+    action: action,
     settings: defaults.settings,
     armies: [],
     system: decode(localStorage.instant_sandbox_system) || defaults.system

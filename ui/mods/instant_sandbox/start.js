@@ -89,6 +89,12 @@ define([
     game.enableServerMods()
 
     dialog.progress("Generating Planets")
+
+    if (config.action == 'LOBBY') {
+      return game.navToLobby
+    } else {
+      return game.startGame
+    }
   }
 
   dialog.progress.subscribe(function(message) {console.log(message)})

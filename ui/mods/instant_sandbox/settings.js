@@ -47,6 +47,12 @@
       options: ['PLAY', 'SPECTATE'],
       default: 'PLAY',
     },
+    instant_sandbox_action: {
+      title: 'Instant Sandbox - Action',
+      type: 'select',
+      options: ['START', 'LOBBY'],
+      default: 'START',
+    },
     instant_sandbox_player_economy: {
       title: 'Instant Sandbox - Player Economy',
       type: 'slider',

@@ -16,6 +16,7 @@ define([], function() {
   ])
 
   var state = ''
+  var readyAction = function() {}
   var callerConfiguration = function() {}
   var textStatus = ko.observable('')
   var simReady = ko.observable(false)
@@ -174,12 +175,17 @@ define([], function() {
     });
   }
 
-  var startGame = function() {
+  var checkReady = function() {
     if (!simReady() || !clientReady() || !modsReady()) return
 
-    //model.joinGame(model.lobbyId());
-    //return
+    readyAction()
+  }
 
+  var navToLobby = function() {
+    model.joinGame(model.lobbyId());
+  }
+
+  var startGame = function() {
     textStatus('starting game')
     model.send_message('start_game', undefined, function(success, errorMessage) {
       if (!success) {
@@ -189,9 +195,9 @@ define([], function() {
     });
   };
 
-  simReady.subscribe(startGame)
-  clientReady.subscribe(startGame)
-  modsReady.subscribe(startGame)
+  simReady.subscribe(checkReady)
+  clientReady.subscribe(checkReady)
+  modsReady.subscribe(checkReady)
 
   var states = {
     landing: function(msg) {
@@ -203,7 +209,7 @@ define([], function() {
       window.location.href = msg.url;
     },
     lobby: function(msg) {
-      callerConfiguration(msg)
+      readyAction = callerConfiguration(msg)
       testLoading()
     }
   }
@@ -282,6 +288,8 @@ define([], function() {
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     addAI: addAI,
+    checkReady: checkReady,
+    navToLobby: navToLobby,
     startGame: startGame,
     simReady: simReady,
     clientReady: clientReady,

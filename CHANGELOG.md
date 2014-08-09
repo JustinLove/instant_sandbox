@@ -5,6 +5,7 @@
 - Fix the set-system button in settings screen
 - Option to spectate
 - "AI Armies" (1-9) replaced with "Armies" (2-10)
+- Option to go to configured lobby instead of starting
 
 ## 2.1.0
 
