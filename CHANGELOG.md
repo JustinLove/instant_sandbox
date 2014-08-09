@@ -1,8 +1,10 @@
 # Instant Sandbox Changelog
 
-## 2.1.1
+## 2.2.0
 
 - Fix the set-system button in settings screen
+- Option to spectate
+- "AI Armies" (1-9) replaced with "Armies" (2-10)
 
 ## 2.1.0
 

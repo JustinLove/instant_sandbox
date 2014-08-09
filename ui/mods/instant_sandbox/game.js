@@ -162,14 +162,14 @@ define([], function() {
     });
   }
 
-  var addAI = function(slot, army) {
+  var addAI = function(slot, army, aiId) {
     model.send_message('add_ai', {
         army_index: slot,
         slot_index: 0,
         options: { 'ai': true }
     });
     model.send_message('set_econ_factor', {
-        id: slot.toString(), //making assumptions about how AI ids are assigned
+        id: aiId.toString(),
         economy_factor: army.economy_factor
     });
   }

@@ -41,6 +41,12 @@
   $('.slider').attr('data-slider-tooltip', 'show')
 
   _.extend(api.settings.definitions.ui.settings, {
+    instant_sandbox_play: {
+      title: 'Instant Sandbox - Play',
+      type: 'select',
+      options: ['PLAY', 'SPECTATE'],
+      default: 'PLAY',
+    },
     instant_sandbox_player_economy: {
       title: 'Instant Sandbox - Player Economy',
       type: 'slider',
@@ -63,12 +69,12 @@
       },
       default: 0,
     },
-    instant_sandbox_ai_armies: {
-      title: 'Instant Sandbox - AI Armies',
+    instant_sandbox_armies: {
+      title: 'Instant Sandbox - Armies',
       type: 'slider',
       options: {
-        min: 1,
-        max: 9,
+        min: 2,
+        max: 10,
         step: 1
       },
       default: 1,

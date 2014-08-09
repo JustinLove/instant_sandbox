@@ -62,6 +62,13 @@ define([
 
     game.configure(config.settings)
 
+    //making assumptions about how AI ids are assigned
+    var aiIdOffset = 0
+    if (!config.armies[0].player) {
+      model.send_message('leave_army');
+      aiIdOffset = 1
+    }
+
     pastats.setSystem(config.system)
     system.convertClientToServer(config.system)
     game.setSystem(config.system)
@@ -75,7 +82,7 @@ define([
         game.joinSlot(army_index, army, msg.data.players[0].id);
         pastats.setPlayer(army_index, msg.data.players[0])
       } else {
-        game.addAI(army_index, army);
+        game.addAI(army_index, army, army_index + aiIdOffset);
       }
     })
 
