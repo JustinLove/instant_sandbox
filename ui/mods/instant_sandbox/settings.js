@@ -86,15 +86,13 @@
     */
 
 
-  $('#sidebar .content').append(
-    '<div>' + 
-      '<div class="btn_std" id="command" style="margin-left:-6px;" ' +
-          'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
-        '<div class="btn_label" style="width: 270px; margin:8px 0px;">'+
-          'Set Instant Sandbox System' +
-        '</div>'+
-        '<label>' + instantSandboxSystemName + '</label>' +
+  $('.div_commit_btns .btn_std:first').after(
+    '<div class="btn_std" id="instant_sandbox_system" style="margin-right: 5em;" ' +
+        'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
+      '<div class="btn_label" style="">'+
+        'Set Instant Sandbox System' +
       '</div>'+
+      '<label>' + instantSandboxSystemName + '</label>' +
     '</div>')
 })()
   

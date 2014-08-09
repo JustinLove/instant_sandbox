@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.1.1
+
+- Fix the set-system button in settings screen
+
 ## 2.1.0
 
 - Add a one second delay to button enable to avoid accidental clicks when appearing
