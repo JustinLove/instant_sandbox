@@ -69,6 +69,7 @@ define([], function() {
 
       data = JSON.parse(data);
       model.lobbyId(data.LobbyID);
+      sessionStorage.setItem('lobbyId', encode(model.lobbyId()));
 
       installHandlers(config)
       connectToServer(data);
@@ -93,6 +94,7 @@ define([], function() {
       } else {
         textStatus("ubernet game join successful, will connect now");
         model.lobbyId(lobbyId);
+        sessionStorage.setItem('lobbyId', encode(lobbyId));
         connectToServer();
       }
     }).fail(function (data) {

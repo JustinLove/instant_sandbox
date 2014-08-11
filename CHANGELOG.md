@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.2.1
+
+- Set the lobby id in session, which is now used by live_game
+
 ## 2.2.0
 
 - Fix the set-system button in settings screen
