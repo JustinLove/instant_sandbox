@@ -40,21 +40,21 @@
 
   $('.slider').attr('data-slider-tooltip', 'show')
 
-  _.extend(api.settings.definitions.ui.settings, {
+  var instant_sandbox_settings = {
     instant_sandbox_play: {
-      title: 'Instant Sandbox - Play',
+      title: 'Play',
       type: 'select',
       options: ['PLAY', 'SPECTATE'],
       default: 'PLAY',
     },
     instant_sandbox_action: {
-      title: 'Instant Sandbox - Action',
+      title: 'Action',
       type: 'select',
       options: ['START', 'LOBBY'],
       default: 'START',
     },
     instant_sandbox_player_economy: {
-      title: 'Instant Sandbox - Player Economy',
+      title: 'Player Economy',
       type: 'slider',
       options: {
         formater: function(v) {return v.toPrecision(2)},
@@ -66,7 +66,7 @@
       default: 5.0,
     },
     instant_sandbox_ai_economy: {
-      title: 'Instant Sandbox - AI Economy',
+      title: 'AI Economy',
       type: 'slider',
       options: {
         min: 0,
@@ -76,7 +76,7 @@
       default: 0,
     },
     instant_sandbox_armies: {
-      title: 'Instant Sandbox - Armies',
+      title: 'Armies',
       type: 'slider',
       options: {
         min: 2,
@@ -85,7 +85,9 @@
       },
       default: 1,
     }
-  })
+  }
+
+  _.extend(api.settings.definitions.ui.settings, instant_sandbox_settings)
 
   // force model.settingsLists to update
   model.settingDefinitions(api.settings.definitions)
@@ -97,12 +99,18 @@
     'Instant Sandbox')
     */
 
+  var $group = $('<div class="sub-group"></div>').appendTo('.option-list.ui .form-group')
+  $group.append('<div class="sub-group-title">Instant Sandbox</div>')
 
-  $('.div_commit_btns .btn_std:first').after(
+  Object.keys(instant_sandbox_settings).forEach(function(setting) {
+    $group.append('<div class="option" data-bind="template: { name: \'setting-template\', data: $root.settingsItemMap()[\'ui.' + setting + '\'] }"></div>')
+  })
+
+  $('.div_commit_btns').prepend(
     '<div class="btn_std" id="instant_sandbox_system" style="margin-right: 5em;" ' +
         'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
       '<div class="btn_label" style="">'+
-        'Set Instant Sandbox System' +
+        'Instant Sandbox' +
       '</div>'+
       '<label>' + instantSandboxSystemName + '</label>' +
     '</div>')
