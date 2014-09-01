@@ -107,12 +107,14 @@
   })
 
   $group.append(
-    '<div class="btn_std" id="instant_sandbox_system" style="margin-right: 5em;" ' +
-        'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
-      '<div class="btn_label" style="">'+
-        'Set System' +
-      '</div>'+
-      '<label>' + instantSandboxSystemName + '</label>' +
+    '<div class="option">' +
+      '<div class="btn_std" id="instant_sandbox_system"' +
+          'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
+        '<div class="btn_label" style="">'+
+          'Set System' +
+        '</div>'+
+      '</div>' +
+      instantSandboxSystemName + 
     '</div>')
 })()
   
