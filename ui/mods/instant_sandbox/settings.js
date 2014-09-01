@@ -106,11 +106,11 @@
     $group.append('<div class="option" data-bind="template: { name: \'setting-template\', data: $root.settingsItemMap()[\'ui.' + setting + '\'] }"></div>')
   })
 
-  $('.div_commit_btns').prepend(
+  $group.append(
     '<div class="btn_std" id="instant_sandbox_system" style="margin-right: 5em;" ' +
         'data-bind="click: navToSystemLoad, click_sound: \'default\', rollover_sound: \'default\'">'+
       '<div class="btn_label" style="">'+
-        'Instant Sandbox' +
+        'Set System' +
       '</div>'+
       '<label>' + instantSandboxSystemName + '</label>' +
     '</div>')
