@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.3.0
+
+- Update to settings layout circa 71378
+
 ## 2.2.1
 
 - Set the lobby id in session, which is now used by live_game
