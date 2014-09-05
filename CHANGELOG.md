@@ -3,6 +3,7 @@
 ## 2.3.0
 
 - Update to settings layout circa 71378
+- Replace engine calls with api.net where available
 
 ## 2.2.1
 

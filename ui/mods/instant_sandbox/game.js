@@ -64,10 +64,9 @@ define([], function() {
     reset();
     textStatus("publish game...");
     console.log("use region: " + model.uberNetRegion());
-    engine.asyncCall("ubernet.startGame", model.uberNetRegion(), 'Config').done(function (data) {
+    api.net.startGame(model.uberNetRegion(), 'Config').done(function (data) {
       textStatus("ubernet created game, gonna connect now...");
 
-      data = JSON.parse(data);
       model.lobbyId(data.LobbyID);
       sessionStorage.setItem('lobbyId', encode(model.lobbyId()));
 
@@ -83,9 +82,7 @@ define([], function() {
   var joinGame = function(lobbyId) {
     textStatus("join ubernet game... ");
 
-    engine.asyncCall("ubernet.joinGame", lobbyId).done(function (data) {
-      data = JSON.parse(data);
-
+    api.net.joinGame({lobbyId: lobbyId}).done(function (data) {
       if (data.PollWaitTimeMS) {
         console.log('poll', data.PollWaitTimeMS)
         window.setTimeout(function() {
@@ -109,12 +106,13 @@ define([], function() {
     model.gameHostname(data.ServerHostname);
     model.gamePort(data.ServerPort);
     textStatus("connecting to game...");
-    engine.call('join_game',
-      String(data.ServerHostname),
-      Number(data.ServerPort),
-      String(model.displayName()),
-      String(data.Ticket),
-      String(JSON.stringify({ password: undefined })));
+    return api.net.connect({
+      host: model.gameHostname(),
+      port: model.gamePort(),
+      displayName: model.displayName() || 'Player',
+      ticket: model.gameTicket(),
+      clientData: {password: undefined, uberid: api.net.uberId()}
+    });
   }
 
   var configure = function(desc) {
