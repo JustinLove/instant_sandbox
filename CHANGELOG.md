@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.3.1
+
+- Fix the slider tooltips
+
 ## 2.3.0
 
 - Update to settings layout circa 71378
