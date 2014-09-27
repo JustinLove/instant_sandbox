@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.3.2
+
+- Disable Require.js timeout due to longer game load times with default render process limit.
+
 ## 2.3.1
 
 - Fix the slider tooltips

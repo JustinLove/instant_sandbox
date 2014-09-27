@@ -1,7 +1,8 @@
 (function() {
-  var paths = require.s.contexts._.config.paths
-  paths.instant_sandbox = 'coui://ui/mods/instant_sandbox'
-  paths.text = paths.text || 'coui://ui/mods/instant_sandbox/text'
+  var config = require.s.contexts._.config
+  config.waitSeconds = 0
+  config.paths.instant_sandbox = 'coui://ui/mods/instant_sandbox'
+  config.paths.text = config.paths.text || 'coui://ui/mods/instant_sandbox/text'
 })()
 
 // make the object keys exist for Panel.ready
