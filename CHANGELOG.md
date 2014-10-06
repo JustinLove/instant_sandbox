@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.3.3
+
+- Gracefully handle undefined commander preference
+
 ## 2.3.2
 
 - Disable Require.js timeout due to longer game load times with default render process limit.

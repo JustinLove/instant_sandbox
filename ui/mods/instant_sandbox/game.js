@@ -155,7 +155,7 @@ define([], function() {
   var joinSlot = function(slot, army, playerId) {
     model.send_message('join_army', {
       army: slot,
-      commander: { ObjectName: model.preferredCommander().ObjectName }
+      commander: { ObjectName: model.preferredCommander() && model.preferredCommander().ObjectName }
     });
     model.send_message('set_econ_factor', {
         id: playerId,
