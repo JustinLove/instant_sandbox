@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.4.0
+
+- Use a local server when appropriate
+
 ## 2.3.3
 
 - Gracefully handle undefined commander preference

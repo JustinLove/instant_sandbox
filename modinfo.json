@@ -1,13 +1,13 @@
 {
   "author": "wondible",
-  "build": "73441",
+  "build": "73687",
   "category": [
     "ui",
     "main-menu",
     "modding"
   ],
   "context": "client",
-  "date": "2014/10/06",
+  "date": "2014/10/09",
   "description": "One click to start a game vs an AI with no economy, or as configured in settings.",
   "display_name": "Instant Sandbox",
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
@@ -24,5 +24,5 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "2.3.3"
+  "version": "2.4.0"
 }

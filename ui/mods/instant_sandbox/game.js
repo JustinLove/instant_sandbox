@@ -22,6 +22,13 @@ define([], function() {
   var simReady = ko.observable(false)
   var clientReady = ko.observable(false)
   var modsReady = ko.observable(true)
+  var region = ko.computed(function() {
+    if (model['useLocalServer']) {
+      return model.useLocalServer() ? 'Local' : (model.uberNetRegion() || "USCentral");
+    } else {
+      return (model.uberNetRegion() || "USCentral");
+    }
+  })
 
   // picked up by live game
   var cheatAllowChangeVision = ko.observable(false).extend({ session: 'cheat_allow_change_vision' });
@@ -63,9 +70,9 @@ define([], function() {
   var publish = function(config) {
     reset();
     textStatus("publish game...");
-    console.log("use region: " + model.uberNetRegion());
-    api.net.startGame(model.uberNetRegion(), 'Config').done(function (data) {
-      textStatus("ubernet created game, gonna connect now...");
+    console.log("use region: " + region());
+    api.net.startGame(region(), 'Config').done(function (data) {
+      textStatus("created game, gonna connect now...");
 
       model.lobbyId(data.LobbyID);
       sessionStorage.setItem('lobbyId', encode(model.lobbyId()));
@@ -73,14 +80,14 @@ define([], function() {
       installHandlers(config)
       connectToServer(data);
     }).fail(function (data) {
-      textStatus("failed to start ubernet game");
+      textStatus("failed to start game");
       reset();
       //model.joinGame(model.lobbyId());
     });
   }
 
   var joinGame = function(lobbyId) {
-    textStatus("join ubernet game... ");
+    textStatus("join game... ");
 
     api.net.joinGame({lobbyId: lobbyId}).done(function (data) {
       if (data.PollWaitTimeMS) {
@@ -89,13 +96,13 @@ define([], function() {
           joinGame(lobbyId);
         }, 5000);
       } else {
-        textStatus("ubernet game join successful, will connect now");
+        textStatus("game join successful, will connect now");
         model.lobbyId(lobbyId);
         sessionStorage.setItem('lobbyId', encode(lobbyId));
         connectToServer();
       }
     }).fail(function (data) {
-      textStatus("failed to join ubernet game");
+      textStatus("failed to join game");
       reset();
     });
   }
@@ -293,6 +300,7 @@ define([], function() {
     startGame: startGame,
     simReady: simReady,
     clientReady: clientReady,
-    textStatus: textStatus
+    textStatus: textStatus,
+    region: region
   }
 })
