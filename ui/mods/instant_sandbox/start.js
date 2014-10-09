@@ -46,7 +46,7 @@ define([
     startInstantSandbox: function() {
       if (!viewModel.instantSandboxEnabled()) return
 
-      if (model.uberNetRegion() && model.isUberNetRegionAvailable()) {
+      if ((model['useLocalServer'] && model.useLocalServer()) || (model.uberNetRegion() && model.isUberNetRegionAvailable())) {
         dialog.open('Making Sandbox')
         game.publish(gameConfiguration)
       } else {

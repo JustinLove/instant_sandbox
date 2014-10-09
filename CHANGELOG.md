@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.4.1
+
+- Don't show region dialog when offline
+
 ## 2.4.0
 
 - Use a local server when appropriate
