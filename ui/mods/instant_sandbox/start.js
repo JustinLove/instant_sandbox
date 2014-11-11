@@ -8,15 +8,6 @@ define([
 ], function(system, game, config, dialog, pastats, html) {
   "use strict";
 
-  var hasPAStats = function() {
-    for (var i in scene_mod_list.start) {
-      if (scene_mod_list.start[i].match('pastats/scenes/ranked_matcher')) {
-        return true
-      }
-    }
-    return false
-  }
-
   var instantSandboxReady = ko.observable(false)
 
   var originalFinishRegionSetup = model.finishRegionSetup
@@ -101,8 +92,6 @@ define([
 
   return {
     ready: function() {
-      if (hasPAStats()) return
-
       var $button = $(html)
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])

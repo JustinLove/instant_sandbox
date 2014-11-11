@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 2.4.2
+
+- Remove obsolete incompatibility check for PAStats matchmaking
+- Add hasOwnProperty guard to array enumeration
+
 ## 2.4.1
 
 - Don't show region dialog when offline

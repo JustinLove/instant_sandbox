@@ -15,7 +15,9 @@
     handlers[event] = function() {
       //console.log('panhandler', event, arguments)
       for (var i in actions[event]) {
-        actions[event][i].apply(window, arguments)
+        if (actions[event].hasOwnProperty(i)) {
+          actions[event][i].apply(window, arguments)
+        }
       }
       if (prior) prior.apply(window, arguments)
     }
