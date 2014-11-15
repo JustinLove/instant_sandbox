@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.4.3
+
+- Defer setting of planets until after server mods to enable custom biomes
+
 ## 2.4.2
 
 - Remove obsolete incompatibility check for PAStats matchmaking

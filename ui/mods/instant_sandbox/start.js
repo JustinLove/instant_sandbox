@@ -47,12 +47,22 @@ define([
   }
 
   var gameConfiguration = function(msg) {
-    dialog.progress("lobby: configure planets...");
+    dialog.progress("Configure Settings");
 
     pastats.setLobby(model.lobbyId())
 
+    // mods may enable system types
+    game.enableServerMods()
+
     game.configure(config.settings)
 
+    dialog.progress("Configure Planets")
+
+    pastats.setSystem(config.system)
+    system.convertClientToServer(config.system)
+    game.setSystem(config.system)
+
+    dialog.progress("Configure Armies");
     //making assumptions about how AI ids are assigned
     var aiIdOffset = 0
     if (!config.armies[0].player) {
@@ -60,14 +70,10 @@ define([
       aiIdOffset = 1
     }
 
-    pastats.setSystem(config.system)
-    system.convertClientToServer(config.system)
-    game.setSystem(config.system)
-
     pastats.setArmies(config.armies)
     game.resetArmies(config.armies)
 
-    dialog.progress("lobby: configuring players...");
+    dialog.progress("Configure Players");
     config.armies.forEach(function(army, army_index) {
       if (army.player) {
         game.joinSlot(army_index, army, msg.data.players[0].id);
@@ -76,8 +82,6 @@ define([
         game.addAI(army_index, army, army_index + aiIdOffset);
       }
     })
-
-    game.enableServerMods()
 
     dialog.progress("Generating Planets")
 

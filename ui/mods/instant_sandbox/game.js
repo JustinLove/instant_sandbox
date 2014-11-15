@@ -1,4 +1,5 @@
 define([], function() {
+
   "use strict";
 
   // make the object keys exist for Panel.ready
@@ -18,6 +19,7 @@ define([], function() {
   var state = ''
   var readyAction = function() {}
   var callerConfiguration = function() {}
+  var pendingSystem = null
   var textStatus = ko.observable('')
   var simReady = ko.observable(false)
   var clientReady = ko.observable(false)
@@ -142,12 +144,17 @@ define([], function() {
   }
 
   var setSystem = function(system) {
+    pendingSystem = null
     model.send_message('modify_system', system, function(success) {
       if (!success) {
         textStatus("modify_system failed");
         reset();
       }
     });
+  }
+
+  var delayedSetSystem = function(system) {
+    pendingSystem = system
   }
 
   var resetArmies = function(armies) {
@@ -183,6 +190,8 @@ define([], function() {
   }
 
   var checkReady = function() {
+    if (modsReady() && pendingSystem) setSystem(pendingSystem)
+
     if (!simReady() || !clientReady() || !modsReady()) return
 
     readyAction()
@@ -291,7 +300,7 @@ define([], function() {
     connectToServer: connectToServer,
     configure: configure,
     enableServerMods: enableServerMods,
-    setSystem: setSystem,
+    setSystem: delayedSetSystem,
     resetArmies: resetArmies,
     joinSlot: joinSlot,
     addAI: addAI,
