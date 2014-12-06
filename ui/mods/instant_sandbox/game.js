@@ -202,7 +202,7 @@ define([], function() {
   }
 
   var startGame = function() {
-    textStatus('starting game')
+    textStatus('Starting Game')
     model.send_message('start_game', undefined, function(success, errorMessage) {
       if (!success) {
         textStatus('start_game failed: ' + errorMessage)
