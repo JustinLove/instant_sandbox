@@ -1,22 +1,27 @@
 define([], function() {
-  var FreeForAll = '0'
-  var TeamArmies = '1'
-  var Alliance = '2'
-  var VersusAi = '3'
-
   var Code = 'code'
   var Settings = 'settings'
 
   return {
     config: Settings,
     //config: Code,
+    action: 'START',
+    //action: 'LOBBY',
     settings: {
-      type: FreeForAll,
       spectators: 0,
-      blocked : [],
-      public: false,
-      friends : [],
       password : undefined,
+      friends : [],
+      public: false,
+      blocked : [],
+      tag: 'Testing',
+      game_name: 'Instant Sandbox',
+      game_options: {
+        game_type: 'FreeForAll', /* FreeForAll, TeamArmies, VersusAI ?, Ladder1v1 */
+        listen_to_spectators: true,
+        land_anywhere: true,
+        dynamic_alliances: false,
+        dynamic_alliance_victory: false,
+      }
     },
     armies: [
       { "slots" : 1, alliance: false, economy_factor: 5, player: true },
