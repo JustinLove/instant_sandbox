@@ -56,21 +56,37 @@ define([
 
     game.configure(config.settings)
 
-    configureSystem(msg)
-
     configurePlayers(msg)
 
-    dialog.progress("Generating Planets")
-
-    done().then(navToSandbox)
+    configureSystem(msg).then(function() {
+      dialog.progress("Generating Planets")
+      done().then(navToSandbox)
+    })
   }
 
   var configureSystem = function(msg) {
-    dialog.progress("Configure Planets")
+    dialog.progress("Loading System")
 
-    pastats.setSystem(config.system)
-    system.convertClientToServer(config.system)
-    game.setSystem(config.system)
+    var ready = $.Deferred()
+
+    console.log(config.system, config.system.name)
+    system.loadSystem(config.system.name).then(function(loaded) {
+      console.log('system spec loaded')
+      setSystem(loaded)
+      ready.resolve()
+    }).fail(function() {
+      console.log('system spec not found, using saved copy')
+      setSystem(config.system)
+      ready.resolve()
+    })
+
+    return ready.promise()
+  }
+
+  var setSystem = function(sys) {
+    pastats.setSystem(sys)
+    system.convertClientToServer(sys)
+    game.setSystem(sys)
   }
 
   var configurePlayers = function(msg) {

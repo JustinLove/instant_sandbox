@@ -1,8 +1,9 @@
 # Instant Sandbox Changelog
 
-## 2.4.4
+## 2.5.0
 
 - Game has a new busy spinner
+- Attempt to load current definition of system by same name
 
 ## 2.4.3
 
