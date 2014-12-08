@@ -39,14 +39,14 @@ define([
 
       if ((model['useLocalServer'] && model.useLocalServer()) || (model.uberNetRegion() && model.isUberNetRegionAvailable())) {
         dialog.open('Making Sandbox')
-        game.publish(gameConfiguration)
+        game.publish().then(configureGame)
       } else {
         selectRegion(viewModel.startInstantSandbox)
       }
     }
   }
 
-  var gameConfiguration = function(msg) {
+  var configureGame = function(msg, done) {
     dialog.progress("Configure Settings");
 
     pastats.setLobby(model.lobbyId())
@@ -56,12 +56,24 @@ define([
 
     game.configure(config.settings)
 
+    configureSystem(msg)
+
+    configurePlayers(msg)
+
+    dialog.progress("Generating Planets")
+
+    done().then(navToSandbox)
+  }
+
+  var configureSystem = function(msg) {
     dialog.progress("Configure Planets")
 
     pastats.setSystem(config.system)
     system.convertClientToServer(config.system)
     game.setSystem(config.system)
+  }
 
+  var configurePlayers = function(msg) {
     dialog.progress("Configure Armies");
     //making assumptions about how AI ids are assigned
     var aiIdOffset = 0
@@ -82,13 +94,13 @@ define([
         game.addAI(army_index, army, army_index + aiIdOffset);
       }
     })
+  }
 
-    dialog.progress("Generating Planets")
-
+  var navToSandbox = function() {
     if (config.action == 'LOBBY') {
-      return game.navToLobby
+      game.navToLobby()
     } else {
-      return game.startGame
+      game.startGame()
     }
   }
 

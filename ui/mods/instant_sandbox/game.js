@@ -17,8 +17,8 @@ define([], function() {
   ])
 
   var state = ''
-  var readyAction = function() {}
-  var callerConfiguration = function() {}
+  var readyPromise = $.Deferred()
+  var configPromise = $.Deferred()
   var pendingSystem = null
   var textStatus = ko.observable('')
   var simReady = ko.observable(false)
@@ -50,7 +50,8 @@ define([], function() {
     removeHandlers()
     engine.call('reset_game_state');
     state = ''
-    callerConfiguration = function() {}
+    readyPromise = $.Deferred()
+    configPromise = $.Deferred()
     simReady(false)
     clientReady(false)
     modsReady(true)
@@ -83,9 +84,11 @@ define([], function() {
       connectToServer(data);
     }).fail(function (data) {
       textStatus("failed to start game");
+      configPromise.reject()
       reset();
       //model.joinGame(model.lobbyId());
     });
+    return configPromise.promise()
   }
 
   var joinGame = function(lobbyId) {
@@ -194,7 +197,7 @@ define([], function() {
 
     if (!simReady() || !clientReady() || !modsReady()) return
 
-    readyAction()
+    readyPromise.resolve()
   }
 
   var navToLobby = function() {
@@ -211,6 +214,11 @@ define([], function() {
     });
   };
 
+  var configurationComplete = function() {
+    testLoading()
+    return readyPromise.promise()
+  }
+
   simReady.subscribe(checkReady)
   clientReady.subscribe(checkReady)
   modsReady.subscribe(checkReady)
@@ -225,13 +233,11 @@ define([], function() {
       window.location.href = msg.url;
     },
     lobby: function(msg) {
-      readyAction = callerConfiguration(msg)
-      testLoading()
+      configPromise.resolve(msg, configurationComplete)
     }
   }
 
-  var installHandlers = function(config) {
-    callerConfiguration = config
+  var installHandlers = function() {
     Object.keys(gameHandlers).forEach(function(handler) {
       panhandler.on(handler, gameHandlers[handler])
     })
