@@ -4,6 +4,7 @@
 
 - Game has a new busy spinner
 - Attempt to load current definition of system by same name
+- Go-to-lobby works with local server
 
 ## 2.4.3
 

@@ -201,7 +201,7 @@ define([], function() {
   }
 
   var navToLobby = function() {
-    model.joinGame(model.lobbyId());
+    window.location.href = 'coui://ui/main/game/new_game/new_game.html'
   }
 
   var startGame = function() {
