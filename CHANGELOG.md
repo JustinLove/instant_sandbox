@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.4.4
+
+- Game has a new busy spinner
+
 ## 2.4.3
 
 - Defer setting of planets until after server mods to enable custom biomes
