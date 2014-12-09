@@ -92,10 +92,9 @@ define([
   var configurePlayers = function(msg) {
     dialog.progress("Configure Armies");
     //making assumptions about how AI ids are assigned
-    var aiIdOffset = 0
+    var aiIdOffset = 1
     if (!config.armies[0].player) {
       model.send_message('leave_army');
-      aiIdOffset = 1
     }
 
     pastats.setArmies(config.armies)
@@ -103,11 +102,14 @@ define([
 
     dialog.progress("Configure Players");
     config.armies.forEach(function(army, army_index) {
+      var slot = 0
       if (army.player) {
-        game.joinSlot(army_index, army, msg.data.players[0].id);
+        game.joinArmy(army_index, army, msg.data.players[0].id);
         pastats.setPlayer(army_index, msg.data.players[0])
-      } else {
-        game.addAI(army_index, army, army_index + aiIdOffset);
+        slot++
+      }
+      while (slot < army.slots) {
+        game.addAI(army_index, slot++, army, aiIdOffset++);
       }
     })
   }

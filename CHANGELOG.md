@@ -6,6 +6,7 @@
 - Attempt to load current definition of system by same name
 - Go-to-lobby works with local server
 - Updated defaults.settings object to current structure
+- Bring back AI Commanders Per Army
 
 ## 2.4.3
 

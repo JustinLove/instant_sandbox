@@ -82,6 +82,16 @@
         step: 1
       },
       default: 1,
+    },
+    instant_sandbox_ai_slots: {
+      title: 'AI Commanders Per Army',
+      type: 'slider',
+      options: {
+        min: 1,
+        max: 9,
+        step: 1
+      },
+      default: 1,
     }
   }
 
@@ -89,13 +99,6 @@
 
   // force model.settingsLists to update
   model.settingDefinitions(api.settings.definitions)
-
-/*
-  model.addSetting_Slider(
-    'AI Commanders Per Army', 'instant_sandbox_ai_slots', 'UI',
-    1, 9, 1,
-    'Instant Sandbox')
-    */
 
   var $group = $('<div class="sub-group"></div>').appendTo('.option-list.ui .form-group')
   $group.append('<div class="sub-group-title">Instant Sandbox</div>')

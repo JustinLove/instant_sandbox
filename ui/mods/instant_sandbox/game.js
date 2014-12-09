@@ -169,9 +169,9 @@ define([], function() {
     })
   }
 
-  var joinSlot = function(slot, army, playerId) {
+  var joinArmy = function(army_index, army, playerId) {
     model.send_message('join_army', {
-      army: slot,
+      army: army_index,
       commander: { ObjectName: model.preferredCommander() && model.preferredCommander().ObjectName }
     });
     model.send_message('set_econ_factor', {
@@ -180,10 +180,10 @@ define([], function() {
     });
   }
 
-  var addAI = function(slot, army, aiId) {
+  var addAI = function(army_index, slot_index, army, aiId) {
     model.send_message('add_ai', {
-        army_index: slot,
-        slot_index: 0,
+        army_index: army_index,
+        slot_index: slot_index,
         options: { 'ai': true }
     });
     model.send_message('set_econ_factor', {
@@ -308,7 +308,7 @@ define([], function() {
     enableServerMods: enableServerMods,
     setSystem: delayedSetSystem,
     resetArmies: resetArmies,
-    joinSlot: joinSlot,
+    joinArmy: joinArmy,
     addAI: addAI,
     checkReady: checkReady,
     navToLobby: navToLobby,

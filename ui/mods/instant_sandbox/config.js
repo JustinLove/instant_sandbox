@@ -6,6 +6,7 @@ define(['instant_sandbox/defaults'], function(defaults) {
   var play = api.settings.isSet('ui', 'instant_sandbox_play', true) || 'PLAY'
   var action = api.settings.isSet('ui', 'instant_sandbox_action', true) || 'START'
   var armies = api.settings.isSet('ui', 'instant_sandbox_armies', true) || 2
+  var ai_slots = api.settings.isSet('ui', 'instant_sandbox_ai_slots', true) || 1
   var playerEconomy = api.settings.isSet('ui', 'instant_sandbox_player_economy', true) || 5.0
   var aiEconomy = api.settings.isSet('ui', 'instant_sandbox_ai_economy', true) || 0.0
 
@@ -32,7 +33,7 @@ define(['instant_sandbox/defaults'], function(defaults) {
 
   for (var i = players; i < armies; i++) {
     config.armies.push({
-      slots: 1, //settings.instant_sandbox_ai_slots,
+      slots: ai_slots,
       alliance: false,
       economy_factor: aiEconomy
     })
