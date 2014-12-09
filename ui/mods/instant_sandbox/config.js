@@ -1,4 +1,7 @@
-define(['instant_sandbox/defaults'], function(defaults) {
+define([
+  'instant_sandbox/defaults',
+  'instant_sandbox/personalities'
+], function(defaults, personalities) {
   if (defaults.config == 'code') {
     return defaults
   }
@@ -9,6 +12,8 @@ define(['instant_sandbox/defaults'], function(defaults) {
   var ai_slots = api.settings.isSet('ui', 'instant_sandbox_ai_slots', true) || 1
   var playerEconomy = api.settings.isSet('ui', 'instant_sandbox_player_economy', true) || 5.0
   var aiEconomy = api.settings.isSet('ui', 'instant_sandbox_ai_economy', true) || 0.0
+  var aiPersonalityName = api.settings.isSet('ui', 'instant_sandbox_ai_personality', true)
+  var aiPersonality = personalities[aiPersonalityName] || personalities.Normal
 
   var config = {
     action: action,
@@ -35,7 +40,8 @@ define(['instant_sandbox/defaults'], function(defaults) {
     config.armies.push({
       slots: ai_slots,
       alliance: false,
-      economy_factor: aiEconomy
+      economy_factor: aiEconomy,
+      personality: aiPersonality
     })
   }
 

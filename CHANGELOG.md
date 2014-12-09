@@ -7,6 +7,8 @@
 - Go-to-lobby works with local server
 - Updated defaults.settings object to current structure
 - Bring back AI Commanders Per Army
+- AI personality can be fully set in defaults
+- Stock personalities can be selected in settings
 
 ## 2.4.3
 

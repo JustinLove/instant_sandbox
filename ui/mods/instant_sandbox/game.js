@@ -184,7 +184,7 @@ define([], function() {
     model.send_message('add_ai', {
         army_index: army_index,
         slot_index: slot_index,
-        options: { 'ai': true }
+        options: { 'ai': true, personality: army.personality }
     });
     model.send_message('set_econ_factor', {
         id: aiId.toString(),

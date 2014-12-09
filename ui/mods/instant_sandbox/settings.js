@@ -92,6 +92,12 @@
         step: 1
       },
       default: 1,
+    },
+    instant_sandbox_ai_personality: {
+      title: 'AI Personality',
+      type: 'select',
+      options: ['Normal', 'Hard', 'Relentless', 'Absurd'],
+      default: 'Normal',
     }
   }
 

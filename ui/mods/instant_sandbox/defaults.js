@@ -1,4 +1,4 @@
-define([], function() {
+define(['instant_sandbox/personalities'], function(personalities) {
   var Code = 'code'
   var Settings = 'settings'
 
@@ -25,7 +25,7 @@ define([], function() {
     },
     armies: [
       { "slots" : 1, alliance: false, economy_factor: 5, player: true },
-      { "slots" : 1, alliance: false, economy_factor: 0 },
+      { "slots" : 1, alliance: false, economy_factor: 0, personality: personalities.Absurd },
       //{ "slots" : 1, alliance: false },
     ],
     system: {
