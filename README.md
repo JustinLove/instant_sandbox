@@ -6,11 +6,14 @@ I was always creating games against an AI x0 to test my mod, so borrowed a bunch
 
 Some of the most common settings can be changed in the game settings:
 
-- Load a system
 - Option to spectate or play
 - Option to go into configured lobby to change unsupported settings
+- Land anywhere or in zones
 - Player economy rate
 - AI economy rate
+- AI personality
 - Number of armies (including player)
+- Number AI commanders per army
+- Load a system
 
 I've tried to concentrate the settings in once place, so if you're comfortable with text editors it is possible to fully customize things.  Changing the `config` property of the `defaults` object to Code will cause it to use the defaults object instead of the user settings.
