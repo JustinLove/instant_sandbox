@@ -9,6 +9,7 @@
 - Bring back AI Commanders Per Army
 - AI personality can be fully set in defaults
 - Stock personalities can be selected in settings
+- Setting to land anywhere, on by default
 
 ## 2.4.3
 

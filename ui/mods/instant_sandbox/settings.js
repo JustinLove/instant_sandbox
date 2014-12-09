@@ -51,6 +51,12 @@
       options: ['START', 'LOBBY'],
       default: 'START',
     },
+    instant_sandbox_landing: {
+      title: 'Landing',
+      type: 'select',
+      options: ['ANYWHERE', 'ZONE'],
+      default: 'ANYWHERE',
+    },
     instant_sandbox_player_economy: {
       title: 'Player Economy',
       type: 'slider',
@@ -73,6 +79,12 @@
       },
       default: 0,
     },
+    instant_sandbox_ai_personality: {
+      title: 'AI Personality',
+      type: 'select',
+      options: ['Normal', 'Hard', 'Relentless', 'Absurd'],
+      default: 'Normal',
+    },
     instant_sandbox_armies: {
       title: 'Armies',
       type: 'slider',
@@ -92,12 +104,6 @@
         step: 1
       },
       default: 1,
-    },
-    instant_sandbox_ai_personality: {
-      title: 'AI Personality',
-      type: 'select',
-      options: ['Normal', 'Hard', 'Relentless', 'Absurd'],
-      default: 'Normal',
     }
   }
 

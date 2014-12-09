@@ -8,6 +8,7 @@ define([
 
   var play = api.settings.isSet('ui', 'instant_sandbox_play', true) || 'PLAY'
   var action = api.settings.isSet('ui', 'instant_sandbox_action', true) || 'START'
+  var landing = api.settings.isSet('ui', 'instant_sandbox_landing', true) || 'ANYWHERE'
   var armies = api.settings.isSet('ui', 'instant_sandbox_armies', true) || 2
   var ai_slots = api.settings.isSet('ui', 'instant_sandbox_ai_slots', true) || 1
   var playerEconomy = api.settings.isSet('ui', 'instant_sandbox_player_economy', true) || 5.0
@@ -21,6 +22,8 @@ define([
     armies: [],
     system: decode(localStorage.instant_sandbox_system) || defaults.system
   }
+
+  config.settings.game_options.land_anywhere = (landing == 'ANYWHERE')
 
   var players = 1
   if (play == 'SPECTATE') {
