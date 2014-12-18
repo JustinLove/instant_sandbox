@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 2.5.1
+
+- Update menu button style circa 76456
+- Remove disable timeout since it doesn't shift the quit button anymore
+
 ## 2.5.0
 
 - Game has a new busy spinner

@@ -8,8 +8,6 @@ define([
 ], function(system, game, config, dialog, pastats, html) {
   "use strict";
 
-  var instantSandboxReady = ko.observable(false)
-
   var originalFinishRegionSetup = model.finishRegionSetup
   var regionSetupContinuation = originalFinishRegionSetup
   model.finishRegionSetup = function() {
@@ -32,7 +30,7 @@ define([
 
   var viewModel = {
     instantSandboxEnabled: ko.computed(function() {
-      return model.allowNewOrJoinGame() && instantSandboxReady()
+      return model.allowNewOrJoinGame()
     }),
     startInstantSandbox: function() {
       if (!viewModel.instantSandboxEnabled()) return
@@ -130,7 +128,6 @@ define([
       $('#navigation_items').append($button)
       ko.applyBindings(viewModel, $button[0])
       game.textStatus.subscribe(dialog.progress)
-      setTimeout(function() {instantSandboxReady(true)}, 1000)
     }
   }
 })
