@@ -21,6 +21,7 @@ define(['instant_sandbox/personalities'], function(personalities) {
         land_anywhere: true,
         dynamic_alliances: false,
         dynamic_alliance_victory: false,
+        sandbox: true,
       }
     },
     armies: [

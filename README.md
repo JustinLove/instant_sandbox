@@ -1,6 +1,6 @@
 # Instant Sandbox
 
-One click to start a game with neutered AI (economy rate 0)
+One click to start a game with neutered AI (economy rate 0) and cheats enabled.
 
 I was always creating games against an AI x0 to test my mod, so borrowed a bunch of code from the PAStats matchmaker (after cross-referencing with the game code) to add an item to the main menu.
 

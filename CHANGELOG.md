@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.6.0
+
+- Enable sandbox/cheat mode (80404-pte+)
+
 ## 2.5.1
 
 - Update menu button style circa 76456
