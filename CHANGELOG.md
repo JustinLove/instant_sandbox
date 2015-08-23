@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.7.0
+
+- Start the game in the current active-product/expansion/content mode (e.g. Titans)
+
 ## 2.6.0
 
 - Enable sandbox/cheat mode (80404-pte+)

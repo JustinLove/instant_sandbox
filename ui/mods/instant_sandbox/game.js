@@ -73,8 +73,14 @@ define([], function() {
   var publish = function(config) {
     reset();
     textStatus("publish game...");
-    console.log("use region: " + region());
-    api.net.startGame(region(), 'Config').done(function (data) {
+
+    var mode = 'Config'
+    if (!_.isEmpty(api.content.active()))
+      mode = api.content.active() + ':' + mode;
+
+    console.log("mode: ", mode, "region: " + region());
+
+    api.net.startGame(region(), mode).done(function (data) {
       textStatus("created game, gonna connect now...");
 
       model.lobbyId(data.LobbyID);
@@ -123,6 +129,7 @@ define([], function() {
       port: model.gamePort(),
       displayName: model.displayName() || 'Player',
       ticket: model.gameTicket(),
+      content: api.content.active(),
       clientData: {password: undefined, uberid: api.net.uberId()}
     });
   }
