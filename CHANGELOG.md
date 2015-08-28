@@ -1,5 +1,10 @@
 # Instant Sandbox Changelog
 
+## 2.8.0
+
+- "Idle" available for personality setting (new default), which doesn't affect eco rate since 84088-pte
+- Default eco rates set to 1.0
+
 ## 2.7.0
 
 - Start the game in the current active-product/expansion/content mode (e.g. Titans)

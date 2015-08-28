@@ -61,13 +61,11 @@
       title: 'Player Economy',
       type: 'slider',
       options: {
-        formater: function(v) {return v.toPrecision(2)},
-        tooltip: 'show',
         min: 0,
         max: 5.0,
         step: 0.1
       },
-      default: 5.0,
+      default: 1.0,
     },
     instant_sandbox_ai_economy: {
       title: 'AI Economy',
@@ -77,13 +75,13 @@
         max: 5.0,
         step: 0.1
       },
-      default: 0,
+      default: 1.0,
     },
     instant_sandbox_ai_personality: {
       title: 'AI Personality',
       type: 'select',
-      options: ['Normal', 'Hard', 'Relentless', 'Absurd'],
-      default: 'Normal',
+      options: ['Idle', 'Normal', 'Hard', 'Relentless', 'Absurd'],
+      default: 'Idle',
     },
     instant_sandbox_armies: {
       title: 'Armies',
