@@ -7,9 +7,9 @@
     "modding"
   ],
   "context": "client",
-  "date": "2015/08/28",
+  "date": "2016/01/26",
   "description": "One click to start a game vs an AI with no economy, or as configured in settings.",
-  "display_name": "Instant Sandbox",
+  "display_name": "Instant Sandbox - Legion Pride",
   "forum": "https://forums.uberent.com/threads/wip-instant-sandbox.56920/",
   "identifier": "com.wondible.pa.instant_sandbox",
   "icon": "http://pamods.github.io/icons/instant_sandbox.png",

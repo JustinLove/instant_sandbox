@@ -185,6 +185,8 @@ define([], function() {
         id: playerId,
         economy_factor: army.economy_factor
     });
+    model.send_message('set_primary_color_index', Number(0));
+    model.send_message('set_secondary_color_index', Number(10));
   }
 
   var addAI = function(army_index, slot_index, army, aiId) {
