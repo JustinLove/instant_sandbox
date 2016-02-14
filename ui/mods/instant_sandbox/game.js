@@ -179,7 +179,7 @@ define([], function() {
   var joinArmy = function(army_index, army, playerId) {
     model.send_message('join_army', {
       army: army_index,
-      commander: { ObjectName: model.preferredCommander() && model.preferredCommander().ObjectName }
+      commander: model.preferredCommander(),
     });
     model.send_message('set_econ_factor', {
         id: playerId,

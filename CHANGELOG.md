@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.8.1
+
+- Fix using preferred commander
+
 ## 2.8.0
 
 - "Idle" available for personality setting (new default), which doesn't affect eco rate since 84088-pte
