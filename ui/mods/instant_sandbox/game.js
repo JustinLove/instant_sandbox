@@ -39,7 +39,7 @@ define([], function() {
   var cheatAllowModDataUpdates = ko.observable(false).extend({ session: 'cheat_allow_mod_data_updates' });
 
   var setCheatsFromCheatConfig = function(config) {
-    console.log("setCheatsFromCheatConfig: " + JSON.stringify(config));
+    //console.log("setCheatsFromCheatConfig: " + JSON.stringify(config));
     cheatAllowChangeVision(config.cheat_flags.allow_change_vision);
     cheatAllowChangeControl(config.cheat_flags.allow_change_control);
     cheatAllowCreateUnit(config.cheat_flags.allow_create_unit);
@@ -77,7 +77,7 @@ define([], function() {
     if (!_.isEmpty(api.content.active()))
       mode = api.content.active() + ':' + mode;
 
-    console.log("mode: ", mode, "region: " + region());
+    //console.log("mode: ", mode, "region: " + region());
 
     api.net.startGame(region(), mode).done(function (data) {
       textStatus("created game, gonna connect now...");
@@ -115,7 +115,7 @@ define([], function() {
 
     api.net.joinGame({lobbyId: lobbyId}).done(function (data) {
       if (data.PollWaitTimeMS) {
-        console.log('poll', data.PollWaitTimeMS)
+        //console.log('poll', data.PollWaitTimeMS)
         window.setTimeout(function() {
           joinGame(lobbyId);
         }, 5000);
@@ -159,7 +159,7 @@ define([], function() {
   var enableServerMods = function() {
     model.send_message('mod_data_available', {}, function (success, response) {
       if (success) {
-        console.log("Server mods requested: " + JSON.stringify(response));
+        //console.log("Server mods requested: " + JSON.stringify(response));
         api.mods.sendModFileDataToServer(response.auth_token);
         modsReady(false)
       }
@@ -271,24 +271,24 @@ define([], function() {
 
   var gameHandlers = {
     server_state: function(msg) {
-      console.log('server_state')
-      console.log(msg)
+      //console.log('server_state')
+      //console.log(msg)
       if (msg.state != state) {
         state = msg.state
         states[msg.state] && states[msg.state](msg)
       }
     },
     control: function(msg) {
-      console.log('control')
-      console.log(msg)
+      //console.log('control')
+      //console.log(msg)
       simReady(msg.sim_ready)
     },
     mount_mod_file_data: function (payload) {
-      console.log("Mounting mod file data: " + JSON.stringify(payload));
+      //console.log("Mounting mod file data: " + JSON.stringify(payload));
       api.mods.mountModFileData();
     },
     server_mod_info_updated: function (payload) {
-      console.log('server_mod_info_updated', payload)
+      //console.log('server_mod_info_updated', payload)
       modsReady(true)
     },
     set_cheat_config: function (payload) {

@@ -67,13 +67,13 @@ define([
 
     var ready = $.Deferred()
 
-    console.log(config.system, config.system.name)
+    //console.log(config.system, config.system.name)
     system.loadSystem(config.system.name).then(function(loaded) {
-      console.log('system spec loaded')
+      //console.log('system spec loaded')
       setSystem(loaded)
       ready.resolve()
     }).fail(function() {
-      console.log('system spec not found, using saved copy')
+      //console.log('system spec not found, using saved copy')
       setSystem(config.system)
       ready.resolve()
     })

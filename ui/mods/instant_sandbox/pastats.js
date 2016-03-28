@@ -42,7 +42,7 @@ define([], function() {
       teams[index].primaryColor = rgb(player.color[0])
       teams[index].secondaryColor = rgb(player.color[1])
       teams[index].players = [{displayName: player.name}],
-      console.log(teams)
+      //console.log(teams)
       localStorage[paStatsGlobal.pa_stats_session_teams] = encode(teams);
     },
   }

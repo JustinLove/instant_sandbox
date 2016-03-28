@@ -9,19 +9,19 @@
 
   instantSandboxSystemName = 'Instant Sandbox System'
   if (instantSandboxSystem() && instantSandboxSystem().name) {
-    console.log('resetting name')
+    //console.log('resetting name')
     instantSandboxSystemName = instantSandboxSystem().name
   }
 
   var previousLastSceneUrl = ko.observable().extend({ session: 'previous_last_scene_url' });
-  console.log(model.lastSceneUrl(), previousLastSceneUrl())
+  //console.log(model.lastSceneUrl(), previousLastSceneUrl())
 
   if (previousLastSceneUrl()) {
     model.lastSceneUrl(previousLastSceneUrl())
     previousLastSceneUrl(null)
   }
 
-  console.log(model.lastSceneUrl(), previousLastSceneUrl())
+  //console.log(model.lastSceneUrl(), previousLastSceneUrl())
 
 
   model.navToSystemLoad = function() {

@@ -2,6 +2,7 @@
 
 ## 2.8.2
 
+- Reduce output to debug console
 - Fix mounting server mods in certain circumstances
 
 ## 2.8.1
