@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.8.2
+
+- Fix mounting server mods in certain circumstances
+
 ## 2.8.1
 
 - Fix using preferred commander

@@ -70,8 +70,7 @@ define([], function() {
     }
   };
 
-  var publish = function(config) {
-    reset();
+  var publishStartGame = function(config) {
     textStatus("publish game...");
 
     var mode = 'Config'
@@ -94,6 +93,20 @@ define([], function() {
       reset();
       //model.joinGame(model.lobbyId());
     });
+  }
+
+  var publish = function(config) {
+    reset();
+
+    if (window.CommunityModsManager) {
+      textStatus("activating server mods...");
+      CommunityModsManager.mountServerMods().then( function( result ) {
+        publishStartGame(config)
+      });
+    } else {
+      publishStartGame(config)
+    }
+
     return configPromise.promise()
   }
 
