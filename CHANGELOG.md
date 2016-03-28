@@ -1,7 +1,8 @@
 # Instant Sandbox Changelog
 
-## 2.8.2
+## 2.9.0
 
+- Try to use information from "Favorite Colour" mod for player and first AI
 - Reduce output to debug console
 - Fix mounting server mods in certain circumstances
 

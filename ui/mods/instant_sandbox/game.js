@@ -198,18 +198,37 @@ define([], function() {
         id: playerId,
         economy_factor: army.economy_factor
     });
+    if (typeof(army.primary_color) == 'number') {
+      model.send_message('set_primary_color_index', Number(army.primary_color));
+    }
+    if (typeof(army.secondary_color) == 'number') {
+      model.send_message('set_secondary_color_index', Number(army.secondary_color));
+    }
   }
 
   var addAI = function(army_index, slot_index, army, aiId) {
+    aiId = aiId.toString()
     model.send_message('add_ai', {
         army_index: army_index,
         slot_index: slot_index,
         options: { 'ai': true, personality: army.personality }
     });
     model.send_message('set_econ_factor', {
-        id: aiId.toString(),
+        id: aiId,
         economy_factor: army.economy_factor
     });
+    if (typeof(army.primary_color) == 'number') {
+      model.send_message('set_primary_color_index_for_ai', {
+        id: aiId,
+        color: Number(army.primary_color)
+      });
+    }
+    if (typeof(army.secondary_color) == 'number') {
+      model.send_message('set_secondary_color_index_for_ai', {
+        id: aiId,
+        color: Number(army.secondary_color)
+      });
+    }
   }
 
   var checkReady = function() {
