@@ -7,10 +7,10 @@
     loadedSystem({})
   }
 
-  instantSandboxSystemName = 'Instant Sandbox System'
+  model.instantSandboxSystemName = ko.observable('Instant Sandbox System')
   if (instantSandboxSystem() && instantSandboxSystem().name) {
     //console.log('resetting name')
-    instantSandboxSystemName = instantSandboxSystem().name
+    model.instantSandboxSystemName(instantSandboxSystem().name)
   }
 
   var previousLastSceneUrl = ko.observable().extend({ session: 'previous_last_scene_url' });
@@ -34,6 +34,19 @@
       nextSceneUrl('coui://ui/main/game/settings/settings.html');
 
       window.location.href = 'coui://ui/main/game/load_planet/load_planet.html';
+    })
+
+  }
+
+  model.resetInstantSandboxSystem = function() {
+    var config = require.s.contexts._.config
+    config.waitSeconds = 0
+    config.paths.instant_sandbox = 'coui://ui/mods/instant_sandbox'
+    config.paths.text = config.paths.text || 'coui://ui/mods/instant_sandbox/text'
+    require(['instant_sandbox/defaults'], function(defaults) {
+      console.log(defaults)
+      instantSandboxSystem(defaults.system)
+      model.instantSandboxSystemName(defaults.system.name)
     })
 
   }
@@ -128,7 +141,13 @@
           'Set System' +
         '</div>'+
       '</div>' +
-      instantSandboxSystemName + 
+      '<div class="btn_std" id="instant_sandbox_default_system"' +
+          'data-bind="click: resetInstantSandboxSystem, click_sound: \'default\', rollover_sound: \'default\'">'+
+        '<div class="btn_label" style="">'+
+          'X' +
+        '</div>'+
+      '</div>' +
+      '<div data-bind="text: instantSandboxSystemName"></div>' +
     '</div>')
 })()
   

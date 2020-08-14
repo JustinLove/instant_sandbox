@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.10.0
+
+- Add settings button to reset to builtin default system
+
 ## 2.9.0
 
 - Try to use information from "Favorite Colour" mod for player and first AI
