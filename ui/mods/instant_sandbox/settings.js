@@ -123,8 +123,8 @@
   // force model.settingsLists to update
   model.settingDefinitions(api.settings.definitions)
 
-  var $group = $('<div class="sub-group"></div>').appendTo('.option-list.ui .form-group')
-  $group.append('<div class="sub-group-title">Instant Sandbox</div>')
+  $('<div class="sub-group-title">Instant Sandbox</div>').appendTo('.option-list.ui .form-group')
+  var $group = $('<div class="sub-group top"></div>').appendTo('.option-list.ui .form-group')
 
   var $template = $('script#setting-template')
   $group.append($template[0].outerHTML.replace('setting-template', 'instant-sandbox-setting-template').replace('hide', 'show'))

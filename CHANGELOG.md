@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.10.1
+
+- Fix heading in settings screen
+
 ## 2.10.0
 
 - Add settings button to reset to builtin default system
