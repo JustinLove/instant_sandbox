@@ -3,6 +3,7 @@
 ## 2.10.1
 
 - Fix heading in settings screen
+- Fix stuck on publish game when starting sandbox game first thing after launching program.
 
 ## 2.10.0
 

@@ -79,6 +79,8 @@ define([], function() {
 
     //console.log("mode: ", mode, "region: " + region());
 
+    api.net.localMultiThread(model.useLocalServerMultiThreadingRule())
+
     api.net.startGame(region(), mode).done(function (data) {
       textStatus("created game, gonna connect now...");
 
