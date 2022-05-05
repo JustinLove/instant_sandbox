@@ -82,8 +82,8 @@
     instant_sandbox_ai_personality: {
       title: 'AI Personality',
       type: 'select',
-      options: ['Normal', 'Hard', 'Relentless', 'Absurd'],
-      default: 'Normal',
+      options: ['Idle','Normal', 'Hard', 'Relentless', 'Absurd'],
+      default: 'Idle',
     },
     instant_sandbox_armies: {
       title: 'Armies',
