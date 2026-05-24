@@ -25,11 +25,7 @@ define([], function() {
   var clientReady = ko.observable(false)
   var modsReady = ko.observable(true)
   var region = ko.computed(function() {
-    if (model['useLocalServer']) {
-      return model.useLocalServer() ? 'Local' : (model.uberNetRegion() || "USCentral");
-    } else {
-      return (model.uberNetRegion() || "USCentral");
-    }
+    return 'Local'
   })
 
   // picked up by live game
@@ -119,7 +115,7 @@ define([], function() {
   }
 
   var connectToServer = function(data) {
-    model.isLocalGame(false);
+    model.isLocalGame(true);
     model.gameTicket(data.Ticket);
     model.gameHostname(data.ServerHostname);
     model.gamePort(data.ServerPort);

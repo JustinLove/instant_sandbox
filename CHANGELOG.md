@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.8.0
+
+- Force sandbox games to host locally (Steam P2P) to match PA's current hosting policy, which routes everything except ranked off official servers
+
 ## 2.7.0
 
 - Start the game in the current active-product/expansion/content mode (e.g. Titans)
