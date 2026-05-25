@@ -1,5 +1,9 @@
 # Instant Sandbox Changelog
 
+## 2.11.0
+
+- Force sandbox games to host locally (Steam P2P) to match PA's current hosting policy, which routes everything except ranked off official servers
+
 ## 2.10.1
 
 - Fix heading in settings screen

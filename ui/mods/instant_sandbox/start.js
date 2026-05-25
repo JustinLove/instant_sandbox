@@ -8,26 +8,6 @@ define([
 ], function(system, game, config, dialog, pastats, html) {
   "use strict";
 
-  var originalFinishRegionSetup = model.finishRegionSetup
-  var regionSetupContinuation = originalFinishRegionSetup
-  model.finishRegionSetup = function() {
-    model.uberNetRegion(model.selectedUberNetRegion());
-
-    if (!model.uberNetRegion())
-        return; /* do nothing */
-
-    var cont = regionSetupContinuation
-    regionSetupContinuation = originalFinishRegionSetup
-    model.inRegionSetup(false)
-    cont()
-  }
-
-  var selectRegion = function(continuation) {
-    regionSetupContinuation = continuation
-    model.inRegionSetup(true)
-    $("#regionDlg").dialog('open');
-  }
-
   var viewModel = {
     instantSandboxEnabled: ko.computed(function() {
       return model.allowNewOrJoinGame()
@@ -35,12 +15,8 @@ define([
     startInstantSandbox: function() {
       if (!viewModel.instantSandboxEnabled()) return
 
-      if ((model['useLocalServer'] && model.useLocalServer()) || (model.uberNetRegion() && model.isUberNetRegionAvailable())) {
-        dialog.open('Making Sandbox')
-        game.publish().then(configureGame)
-      } else {
-        selectRegion(viewModel.startInstantSandbox)
-      }
+      dialog.open('Making Sandbox')
+      game.publish().then(configureGame)
     }
   }
 
